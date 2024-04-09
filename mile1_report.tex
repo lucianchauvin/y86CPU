@@ -22,15 +22,25 @@
     Instruction & Fetch & Decode & Execute & Memory & Write Back & PC Update	 \\
     \hline 
     \verb+rrmovq rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+$\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+$ \leftarrow$ \verb+R[rA]+\\\verb+valB+$\leftarrow$ \verb+R[rB]+ \end{tabular} &  &  & \verb+R[rB]+$\leftarrow $ \verb+valA+ & \verb+PC+$\leftarrow $ \verb+valP+	 \\
-    \verb+irmovq V, rB+ &  &  &  &  &  & 	 \\
+    \hline
+    \verb+irmovq V, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow $ \verb+M_1[PC]+ \\ \verb+F:rB+ $\leftarrow $ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow $ \verb!M_8[PC+2]! \\ \verb+PC+ $\leftarrow $ \verb!PC+10!\end{tabular} &  &  &  & \verb+R[rB]+ $\leftarrow $ \verb+valC+ & \verb+PC+ $\leftarrow $  \verb+valP+	 \\
+    \hline
     \verb+rmmovq rA, D(rB)+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow$  \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow$ \verb!M_8[PC+2]! \\ \verb!valP! $\leftarrow$ \verb!PC+10! \end{tabular}& \begin{tabular}[x]{@{}l@{}}\verb+valA+$ \leftarrow$ \verb+R[rA]+\\\verb+valB+$\leftarrow$ \verb+R[rB]+\end{tabular} & \verb+valE+$\leftarrow$\verb!valB+valC! & \verb+M_8[valE]+$\leftarrow $ \verb+valA+ &  & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
+    \hline
     \verb+mrmovq D(rB), rA+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow$  \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow$ \verb!M_8[PC+2]! \\ \verb!valP! $\leftarrow$ \verb!PC+10! \end{tabular}& \begin{tabular}[x]{@{}l@{}}\verb+valB+$\leftarrow$ \verb+R[rB]+\end{tabular} & \verb+valE+$\leftarrow$\verb!valB+valC! &\verb+valM+ $\leftarrow $ \verb+M_8[valE]+ & \verb+R[rA]+$\leftarrow $ \verb+valM+ & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
+    \hline
         \verb+OPq rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+$\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+$ \leftarrow$ \verb+R[rA]+\\\verb+valB+$\leftarrow$ \verb+R[rB]+ \end{tabular} & \verb+valE+$\leftarrow $ \verb+valB OP valA+ &  & \verb+R[rB]+$\leftarrow $ \verb+valE+ & \verb+PC+$\leftarrow $ \verb+valP+	 \\
+        \hline
     \verb+jXX Dest+ &  &  &  &  &  & 	 \\
+    \hline
     \verb+cmovXX rA, rB+ &  &  &  &  &  & 	 \\
+    \hline
     \verb+call Dest+ &  &  &  &  &  & 	 \\
+    \hline
     \verb+ret+ &  &  &  &  &  & 	 \\
+    \hline
     \verb+pushq rA+ &  &  &  &  &  & 	 \\
+    \hline
     \verb+pop rA+ &  &  &  &  &  & 	 \\
     \hline
  \end{tabular}
