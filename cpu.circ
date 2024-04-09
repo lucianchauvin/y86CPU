@@ -252,12 +252,7 @@
       <a name="addrWidth" val="12"/>
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 12 8
-11 22 33 44 4*ff 33 0 0
-11 0 0 0 11 0 0 0
-22 0 0 0 22 0 0 0
-22 0 0 0 22 0 0 0
-4c 0 0 0 33 0 0 0
-33 0 0 0 33 15*0 44
+20
 </a>
     </comp>
     <comp lib="4" loc="(820,180)" name="Register">
@@ -525,13 +520,13 @@
       <a name="label" val="c"/>
     </comp>
     <comp lib="0" loc="(420,60)" name="Splitter">
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
+      <a name="bit0" val="1"/>
+      <a name="bit2" val="1"/>
+      <a name="bit3" val="1"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
       <a name="incoming" val="8"/>
     </comp>
     <comp lib="0" loc="(700,140)" name="Pin">
