@@ -13,7 +13,7 @@
 \author{Lucian Chauvin \\ 133003371 \\\And Joshua Lass \\ 531009387 \\\And Bjorn Quarfordt \\ 230003985}
 \begin{document}
 \maketitle
-    \vspace{-1cm}
+    \vspace{-2cm}
 \section{Transformation Tables}
 \begin{center}
 \begin{adjustbox}{width=\columnwidth,center}
@@ -21,27 +21,27 @@
     \hline 
     Instruction & Fetch & Decode & Execute & Memory & Write Back & PC Update	 \\
     \hline 
-    \verb+rrmovq rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+$\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+$ \leftarrow$ \verb+R[rA]+\\\verb+valB+$\leftarrow$ \verb+R[rB]+ \end{tabular} &  &  & \verb+R[rB]+$\leftarrow $ \verb+valA+ & \verb+PC+$\leftarrow $ \verb+valP+	 \\
+    \verb+rrmovq rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+ $\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+ $ \leftarrow$ \verb+R[rA]+\\\verb+valB+ $\leftarrow$ \verb+R[rB]+ \end{tabular} &  &  & \verb+R[rB]+ $\leftarrow $ \verb+valA+ & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
     \hline
     \verb+irmovq V, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow $ \verb+M_1[PC]+ \\ \verb+F:rB+ $\leftarrow $ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow $ \verb!M_8[PC+2]! \\ \verb+PC+ $\leftarrow $ \verb!PC+10!\end{tabular} &  &  &  & \verb+R[rB]+ $\leftarrow $ \verb+valC+ & \verb+PC+ $\leftarrow $  \verb+valP+	 \\
     \hline
-    \verb+rmmovq rA, D(rB)+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow$  \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow$ \verb!M_8[PC+2]! \\ \verb!valP! $\leftarrow$ \verb!PC+10! \end{tabular}& \begin{tabular}[x]{@{}l@{}}\verb+valA+$ \leftarrow$ \verb+R[rA]+\\\verb+valB+$\leftarrow$ \verb+R[rB]+\end{tabular} & \verb+valE+$\leftarrow$\verb!valB+valC! & \verb+M_8[valE]+$\leftarrow $ \verb+valA+ &  & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
+    \verb+rmmovq rA, D(rB)+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow$  \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow$ \verb!M_8[PC+2]! \\ \verb!valP! $\leftarrow$ \verb!PC+10! \end{tabular}& \begin{tabular}[x]{@{}l@{}}\verb+valA+ $ \leftarrow$ \verb+R[rA]+\\\verb+valB+ $\leftarrow$ \verb+R[rB]+\end{tabular} & \verb+valE+ $\leftarrow$\verb!valB+valC! & \verb+M_8[valE]+ $\leftarrow $ \verb+valA+ &  & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
     \hline
-    \verb+mrmovq D(rB), rA+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow$  \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow$ \verb!M_8[PC+2]! \\ \verb!valP! $\leftarrow$ \verb!PC+10! \end{tabular}& \begin{tabular}[x]{@{}l@{}}\verb+valB+$\leftarrow$ \verb+R[rB]+\end{tabular} & \verb+valE+$\leftarrow$\verb!valB+valC! &\verb+valM+ $\leftarrow $ \verb+M_8[valE]+ & \verb+R[rA]+$\leftarrow $ \verb+valM+ & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
+    \verb+mrmovq D(rB), rA+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow$  \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]! \\ \verb+valC+ $\leftarrow$ \verb!M_8[PC+2]! \\ \verb!valP! $\leftarrow$ \verb!PC+10! \end{tabular}& \begin{tabular}[x]{@{}l@{}}\verb+valB+ $\leftarrow$ \verb+R[rB]+\end{tabular} & \verb+valE+ $\leftarrow$\verb!valB+valC! &\verb+valM+ $\leftarrow $ \verb+M_8[valE]+ & \verb+R[rA]+ $\leftarrow $ \verb+valM+ & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
     \hline
-        \verb+OPq rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+$\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+$ \leftarrow$ \verb+R[rA]+\\\verb+valB+$\leftarrow$ \verb+R[rB]+ \end{tabular} & \verb+valE+$\leftarrow $ \verb+valB OP valA+ &  & \verb+R[rB]+$\leftarrow $ \verb+valE+ & \verb+PC+$\leftarrow $ \verb+valP+	 \\
+        \verb+OPq rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+ $\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+ $ \leftarrow$ \verb+R[rA]+\\\verb+valB+ $\leftarrow$ \verb+R[rB]+ \end{tabular} & \verb+valE+ $\leftarrow $ \verb+valB OP valA+ &  & \verb+R[rB]+ $\leftarrow $ \verb+valE+ & \verb+PC+ $\leftarrow $ \verb+valP+	 \\
         \hline
-    \verb+jXX Dest+ &  &  &  &  &  & 	 \\
+        \verb+jXX Dest+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow $ \verb+M_1[PC]+\\\verb+valC+ $\leftarrow$ \verb!M_8[PC+1]!\\ \verb+valP+ $\leftarrow $ \verb!PC+9!\end{tabular} &  & \verb+cnd+ $\leftarrow $ \verb+cond(ifun,cc)+ &  &  & \verb+PC+ $\leftarrow \begin{cases}\verb+valC+,\ $\verb+cnd+ $\text{ true} \\ \verb+valC+,\ $\verb+valP+ $\text{ false}\end{cases}$	 \\
     \hline
-    \verb+cmovXX rA, rB+ &  &  &  &  &  & 	 \\
+ \verb+cmovXX rA, rB+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+valC+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+$\leftarrow $ \verb!PC+2!\end{tabular}  & \begin{tabular}[x]{@{}l@{}}\verb+valA+$\leftarrow $ \verb+R[rA]+\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valE+$\leftarrow $ \verb+valA+\end{tabular}  &  & \begin{tabular}[x]{@{}l@{}}\verb+r[rB]+$\leftarrow $ \verb+valE+\end{tabular}  & \begin{tabular}[x]{@{}l@{}}\verb+PC+$\leftarrow $ \verb+valP+\end{tabular}  \\
     \hline
-    \verb+call Dest+ &  &  &  &  &  & 	 \\
+    \verb+call Dest+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+valC+ $\leftarrow$ \verb!M_8[PC+1]!\\\verb+valP+$\leftarrow $ \verb!PC+9!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valB+$\leftarrow$ \verb!R[rSP]! \end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valE+$\leftarrow $ \verb+valB-8+\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+M_8[valE]+$\leftarrow $ \verb+valP+\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+R[rSP]+$\leftarrow $ \verb+valE+\end{tabular} & 	\begin{tabular}[x]{@{}l@{}}\verb+PC+$\leftarrow $ \verb+valC+ \end{tabular} \\
     \hline
-    \verb+ret+ &  &  &  &  &  & 	 \\
+    \verb+ret+ & \verb+icode:ifun+ $\leftarrow $ \verb+M[PC]+& \begin{tabular}[x]{@{}l@{}}\verb+valA+ $\leftarrow $ \verb+R[rSP]+ \\ \verb+valB+ $\leftarrow $ \verb+R[rSP]+ \end{tabular} & \verb+valE+ $\leftarrow $ \verb+valA+$+ 8$ & \verb+valM+ $\leftarrow $ \verb+M_8[valB]+ &  & \verb+PC+ $\leftarrow$ \verb+valM+	 \\
     \hline
-    \verb+pushq rA+ &  &  &  &  &  & 	 \\
+    \verb+pushq rA+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+ $\leftarrow $ \verb+M_1[PC]+\\\verb+rA:F+ $\leftarrow$ \verb!M_1[PC+1]!\\ \verb+valP+ $\leftarrow $ \verb!PC+2!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+ $\leftarrow $ \verb+R[rA]+ \\ \verb+valB+ $\leftarrow $ \verb+R[rSP]+\end{tabular} & \verb+valE+ $\leftarrow $ \verb+valB+$-8$ & \verb+M_8[valE]+ $\leftarrow $ \verb+valA+ & \verb+R[rSP]+ $\leftarrow $ \verb+valE+ & \verb+PC+ $\leftarrow $ \verb+valP+ 	 \\
     \hline
-    \verb+pop rA+ &  &  &  &  &  & 	 \\
+\verb+pop rA+ & \begin{tabular}[x]{@{}l@{}}\verb+icode:ifun+$\leftarrow $ \verb+M_1[PC]+\\\verb+rA:rB+$\leftarrow $ \verb!M_1[PC+1]!\\\verb+valP+$\leftarrow $ \verb!M_8[PC+2]!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valA+$\leftarrow $ \verb+R[rSP]+\\\verb+valB+$\leftarrow $ \verb!R[rSP]!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valE+$\leftarrow $ \verb!valB+8!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+valM+$\leftarrow $ \verb+M_8[valA]+\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+R[rA]+$\leftarrow $ \verb+valM+\\\verb+R[rSP]+$\leftarrow $ \verb!valE!\end{tabular} & \begin{tabular}[x]{@{}l@{}}\verb+PC+$\leftarrow $ \verb+valP+\end{tabular}	 \\
     \hline
  \end{tabular}
 \end{adjustbox}
