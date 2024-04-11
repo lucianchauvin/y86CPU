@@ -1245,4 +1245,19 @@
     <wire from="(490,160)" to="(500,160)"/>
     <wire from="(540,170)" to="(560,170)"/>
   </circuit>
+  <circuit name="tester">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="tester"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(210,250)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+    </comp>
+    <comp lib="0" loc="(310,250)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+    </comp>
+    <wire from="(210,250)" to="(310,250)"/>
+  </circuit>
 </project>
