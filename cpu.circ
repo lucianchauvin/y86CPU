@@ -1305,12 +1305,12 @@
       <a name="value" val="0x4"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="0" loc="(410,230)" name="Constant">
-      <a name="value" val="0x4"/>
+    <comp lib="0" loc="(410,120)" name="Constant">
+      <a name="value" val="0xf"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="0" loc="(500,120)" name="Constant">
-      <a name="value" val="0xf"/>
+    <comp lib="0" loc="(410,230)" name="Constant">
+      <a name="value" val="0x4"/>
       <a name="width" val="4"/>
     </comp>
     <comp lib="0" loc="(710,1000)" name="Pin">
@@ -1378,6 +1378,7 @@
     <wire from="(140,770)" to="(510,770)"/>
     <wire from="(390,1030)" to="(470,1030)"/>
     <wire from="(400,540)" to="(470,540)"/>
+    <wire from="(410,120)" to="(500,120)"/>
     <wire from="(410,230)" to="(480,230)"/>
     <wire from="(460,140)" to="(460,160)"/>
     <wire from="(460,140)" to="(510,140)"/>
