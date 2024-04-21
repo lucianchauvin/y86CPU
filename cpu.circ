@@ -3323,4 +3323,79 @@
     <wire from="(990,900)" to="(1110,900)"/>
     <wire from="(990,900)" to="(990,1020)"/>
   </circuit>
+  <circuit name="decode">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="decode"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(1150,280)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="valA"/>
+      <a name="output" val="true"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="64"/>
+    </comp>
+    <comp lib="0" loc="(1150,300)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="valB"/>
+      <a name="output" val="true"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="64"/>
+    </comp>
+    <comp lib="0" loc="(390,340)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="iCode"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(390,360)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="rA"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(390,380)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="rB"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(750,280)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="WB_valM"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="64"/>
+    </comp>
+    <comp lib="0" loc="(750,300)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="clk"/>
+    </comp>
+    <comp lib="0" loc="(770,490)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="WB_valE"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="64"/>
+    </comp>
+    <comp loc="(1060,280)" name="regFile"/>
+    <comp loc="(690,340)" name="decode1"/>
+    <wire from="(1060,280)" to="(1150,280)"/>
+    <wire from="(1060,300)" to="(1150,300)"/>
+    <wire from="(390,340)" to="(470,340)"/>
+    <wire from="(390,360)" to="(470,360)"/>
+    <wire from="(390,380)" to="(470,380)"/>
+    <wire from="(690,340)" to="(840,340)"/>
+    <wire from="(690,360)" to="(770,360)"/>
+    <wire from="(690,380)" to="(730,380)"/>
+    <wire from="(690,400)" to="(750,400)"/>
+    <wire from="(730,320)" to="(730,380)"/>
+    <wire from="(730,320)" to="(840,320)"/>
+    <wire from="(750,280)" to="(840,280)"/>
+    <wire from="(750,300)" to="(840,300)"/>
+    <wire from="(750,380)" to="(750,400)"/>
+    <wire from="(750,380)" to="(840,380)"/>
+    <wire from="(770,360)" to="(770,400)"/>
+    <wire from="(770,400)" to="(840,400)"/>
+    <wire from="(770,490)" to="(780,490)"/>
+    <wire from="(780,360)" to="(780,490)"/>
+    <wire from="(780,360)" to="(840,360)"/>
+  </circuit>
 </project>
