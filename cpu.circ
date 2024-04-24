@@ -68,24 +68,48 @@
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(180,590)" name="Clock"/>
+    <comp loc="(1130,630)" name="execute"/>
     <comp loc="(430,630)" name="fetch"/>
     <comp loc="(780,630)" name="decode"/>
     <wire from="(180,590)" to="(190,590)"/>
     <wire from="(190,590)" to="(190,650)"/>
     <wire from="(190,590)" to="(540,590)"/>
     <wire from="(190,650)" to="(210,650)"/>
+    <wire from="(430,600)" to="(430,630)"/>
+    <wire from="(430,600)" to="(900,600)"/>
     <wire from="(430,630)" to="(530,630)"/>
+    <wire from="(430,650)" to="(440,650)"/>
     <wire from="(430,670)" to="(520,670)"/>
     <wire from="(430,690)" to="(510,690)"/>
+    <wire from="(430,710)" to="(500,710)"/>
+    <wire from="(440,610)" to="(440,650)"/>
+    <wire from="(440,610)" to="(890,610)"/>
+    <wire from="(500,710)" to="(500,770)"/>
+    <wire from="(500,770)" to="(780,770)"/>
     <wire from="(510,690)" to="(510,710)"/>
     <wire from="(510,710)" to="(560,710)"/>
     <wire from="(520,670)" to="(520,690)"/>
     <wire from="(520,690)" to="(560,690)"/>
     <wire from="(530,630)" to="(530,670)"/>
     <wire from="(530,670)" to="(560,670)"/>
-    <wire from="(540,590)" to="(1070,590)"/>
     <wire from="(540,590)" to="(540,650)"/>
+    <wire from="(540,590)" to="(860,590)"/>
     <wire from="(540,650)" to="(560,650)"/>
+    <wire from="(780,630)" to="(880,630)"/>
+    <wire from="(780,650)" to="(870,650)"/>
+    <wire from="(780,710)" to="(780,770)"/>
+    <wire from="(780,710)" to="(910,710)"/>
+    <wire from="(860,590)" to="(1070,590)"/>
+    <wire from="(860,590)" to="(860,730)"/>
+    <wire from="(860,730)" to="(910,730)"/>
+    <wire from="(870,650)" to="(870,690)"/>
+    <wire from="(870,690)" to="(910,690)"/>
+    <wire from="(880,630)" to="(880,670)"/>
+    <wire from="(880,670)" to="(910,670)"/>
+    <wire from="(890,610)" to="(890,650)"/>
+    <wire from="(890,650)" to="(910,650)"/>
+    <wire from="(900,600)" to="(900,630)"/>
+    <wire from="(900,630)" to="(910,630)"/>
   </circuit>
   <circuit name="instructionMem">
     <a name="appearance" val="logisim_evolution"/>
@@ -3552,5 +3576,11 @@
     <wire from="(770,490)" to="(780,490)"/>
     <wire from="(780,360)" to="(780,490)"/>
     <wire from="(780,360)" to="(840,360)"/>
+  </circuit>
+  <circuit name="WriteBack">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="WriteBack"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
   </circuit>
 </project>
