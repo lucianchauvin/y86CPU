@@ -1306,7 +1306,7 @@
       <a name="width" val="64"/>
     </comp>
     <comp lib="0" loc="(280,2140)" name="Constant">
-      <a name="value" val="0xff"/>
+      <a name="value" val="0xb"/>
       <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(500,1000)" name="Splitter">
@@ -1455,9 +1455,6 @@
       <a name="size" val="30"/>
     </comp>
     <comp lib="1" loc="(680,890)" name="AND Gate">
-      <a name="size" val="30"/>
-    </comp>
-    <comp lib="1" loc="(940,50)" name="AND Gate">
       <a name="size" val="30"/>
     </comp>
     <comp lib="2" loc="(150,610)" name="Decoder">
@@ -2061,7 +2058,7 @@
     <wire from="(570,1880)" to="(610,1880)"/>
     <wire from="(570,2010)" to="(610,2010)"/>
     <wire from="(570,260)" to="(610,260)"/>
-    <wire from="(570,380)" to="(620,380)"/>
+    <wire from="(570,380)" to="(600,380)"/>
     <wire from="(570,500)" to="(650,500)"/>
     <wire from="(570,650)" to="(610,650)"/>
     <wire from="(570,770)" to="(610,770)"/>
@@ -2098,6 +2095,8 @@
     <wire from="(590,790)" to="(690,790)"/>
     <wire from="(590,910)" to="(590,1040)"/>
     <wire from="(590,910)" to="(690,910)"/>
+    <wire from="(600,370)" to="(600,380)"/>
+    <wire from="(600,370)" to="(650,370)"/>
     <wire from="(610,1130)" to="(610,1140)"/>
     <wire from="(610,1130)" to="(640,1130)"/>
     <wire from="(610,1250)" to="(610,1260)"/>
@@ -2146,11 +2145,10 @@
     <wire from="(620,1890)" to="(650,1890)"/>
     <wire from="(620,2020)" to="(620,2150)"/>
     <wire from="(620,2020)" to="(640,2020)"/>
-    <wire from="(620,270)" to="(630,270)"/>
-    <wire from="(620,370)" to="(620,380)"/>
-    <wire from="(620,370)" to="(650,370)"/>
+    <wire from="(620,270)" to="(620,390)"/>
+    <wire from="(620,270)" to="(640,270)"/>
     <wire from="(620,390)" to="(620,520)"/>
-    <wire from="(620,390)" to="(630,390)"/>
+    <wire from="(620,390)" to="(650,390)"/>
     <wire from="(620,520)" to="(620,660)"/>
     <wire from="(620,520)" to="(650,520)"/>
     <wire from="(620,660)" to="(620,780)"/>
@@ -2161,9 +2159,6 @@
     <wire from="(620,900)" to="(650,900)"/>
     <wire from="(630,220)" to="(630,240)"/>
     <wire from="(630,240)" to="(680,240)"/>
-    <wire from="(630,270)" to="(630,390)"/>
-    <wire from="(630,270)" to="(640,270)"/>
-    <wire from="(630,390)" to="(650,390)"/>
     <wire from="(640,1000)" to="(690,1000)"/>
     <wire from="(640,1100)" to="(640,1120)"/>
     <wire from="(640,1120)" to="(690,1120)"/>
