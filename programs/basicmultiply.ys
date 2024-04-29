@@ -1,0 +1,39 @@
+
+    .pos 0
+    irmovq stack, %rsp
+    irmovq stack, %rsp
+    call main 
+    halt
+    
+
+main:
+    irmovq $7, %rcx
+    irmovq $11, %rdx
+    pushq %rcx
+    pushq %rdx
+    call multiply
+    popq %r8
+    popq %r8
+    ret
+    
+
+multiply:
+    mrmovq 8(%rsp), %r8
+    mrmovq 16(%rsp), %r9
+    irmovq $0, %rax         #set result to 0
+    irmovq $0, %r10         #register used for constant 0
+    irmovq $1, %r11         #register used for constant 1
+    
+multiplyloopa:
+    subq %r10, %r8 #check if a != 0
+    je multiplydone   #if a = 0, we are done
+    subq %r11, %r8 #decrease a by 1.
+    addq %r9, %rax
+    jne multiplyloopa
+    
+multiplydone:
+    ret
+    
+    .pos 0x200
+stack:
+
