@@ -3919,6 +3919,7 @@
     <comp lib="4" loc="(890,190)" name="RAM">
       <a name="addrWidth" val="12"/>
       <a name="appearance" val="logisim_evolution"/>
+      <a name="enables" val="line"/>
     </comp>
     <comp loc="(540,210)" name="MemReadWrite"/>
     <comp loc="(540,280)" name="MemDataMemAddr"/>
@@ -4112,8 +4113,6 @@
     <wire from="(790,240)" to="(890,240)"/>
     <wire from="(800,160)" to="(1310,160)"/>
     <wire from="(800,160)" to="(800,210)"/>
-    <wire from="(800,210)" to="(800,250)"/>
-    <wire from="(800,250)" to="(890,250)"/>
     <wire from="(810,210)" to="(810,230)"/>
     <wire from="(810,210)" to="(820,210)"/>
     <wire from="(810,230)" to="(850,230)"/>
