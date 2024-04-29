@@ -479,8 +479,7 @@
       <a name="addrWidth" val="12"/>
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 12 8
-20 12 22 33 44 55 66 77
-88 11
+b0
 </a>
     </comp>
     <comp lib="4" loc="(820,180)" name="Register">
@@ -3201,12 +3200,10 @@
     <wire from="(850,310)" to="(990,310)"/>
     <wire from="(850,440)" to="(910,440)"/>
     <wire from="(860,560)" to="(950,560)"/>
-    <wire from="(910,340)" to="(910,440)"/>
-    <wire from="(910,340)" to="(980,340)"/>
+    <wire from="(910,330)" to="(910,440)"/>
+    <wire from="(910,330)" to="(990,330)"/>
     <wire from="(950,350)" to="(950,560)"/>
     <wire from="(950,350)" to="(990,350)"/>
-    <wire from="(980,330)" to="(980,340)"/>
-    <wire from="(980,330)" to="(990,330)"/>
   </circuit>
   <circuit name="CC">
     <a name="appearance" val="logisim_evolution"/>
