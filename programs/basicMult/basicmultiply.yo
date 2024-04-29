@@ -1,0 +1,34 @@
+                            | 
+0x000:                      |     .pos 0
+0x000: 30f40002000000000000 |     irmovq stack, %rsp
+0x00a: 30f40002000000000000 |     irmovq stack, %rsp
+0x014: 801e00000000000000   |     call main 
+0x01d: 00                   |     halt
+                            |     
+                            | 
+0x01e:                      | main:
+0x01e: 30f10700000000000000 |     irmovq $7, %rcx
+0x028: 30f20b00000000000000 |     irmovq $11, %rdx
+0x032: 00                   |     halt
+                            |     
+                            | 
+0x033:                      | multiply:
+0x033: 50840800000000000000 |     mrmovq 8(%rsp), %r8
+0x03d: 50941000000000000000 |     mrmovq 16(%rsp), %r9
+0x047: 30f00000000000000000 |     irmovq $0, %rax         #set result to 0
+0x051: 30fa0000000000000000 |     irmovq $0, %r10         #register used for constant 0
+0x05b: 30fb0100000000000000 |     irmovq $1, %r11         #register used for constant 1
+                            |     
+0x065:                      | multiplyloopa:
+0x065: 61a8                 |     subq %r10, %r8 #check if a != 0
+0x067: 737d00000000000000   |     je multiplydone   #if a = 0, we are done
+0x070: 61b8                 |     subq %r11, %r8 #decrease a by 1.
+0x072: 6090                 |     addq %r9, %rax
+0x074: 746500000000000000   |     jne multiplyloopa
+                            |     
+0x07d:                      | multiplydone:
+0x07d: 90                   |     ret
+                            |     
+0x200:                      |     .pos 0x200
+0x200:                      | stack:
+                            | 
