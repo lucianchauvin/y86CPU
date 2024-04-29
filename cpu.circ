@@ -3561,7 +3561,7 @@
       <a name="value" val="0x4"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="0" loc="(500,120)" name="Constant">
+    <comp lib="0" loc="(470,120)" name="Constant">
       <a name="value" val="0xf"/>
       <a name="width" val="4"/>
     </comp>
@@ -3613,7 +3613,9 @@
       <a name="selloc" val="tr"/>
       <a name="width" val="4"/>
     </comp>
-    <wire from="(100,190)" to="(100,470)"/>
+    <wire from="(100,190)" to="(100,450)"/>
+    <wire from="(100,450)" to="(100,470)"/>
+    <wire from="(100,450)" to="(510,450)"/>
     <wire from="(100,470)" to="(100,480)"/>
     <wire from="(100,470)" to="(510,470)"/>
     <wire from="(100,480)" to="(100,490)"/>
@@ -3647,6 +3649,7 @@
     <wire from="(470,1020)" to="(470,1030)"/>
     <wire from="(470,1020)" to="(510,1020)"/>
     <wire from="(470,1030)" to="(510,1030)"/>
+    <wire from="(470,120)" to="(500,120)"/>
     <wire from="(470,510)" to="(470,520)"/>
     <wire from="(470,510)" to="(510,510)"/>
     <wire from="(470,520)" to="(470,530)"/>
@@ -3686,10 +3689,8 @@
     <wire from="(500,270)" to="(510,270)"/>
     <wire from="(500,430)" to="(500,440)"/>
     <wire from="(500,430)" to="(510,430)"/>
-    <wire from="(500,440)" to="(500,450)"/>
+    <wire from="(500,440)" to="(500,460)"/>
     <wire from="(500,440)" to="(510,440)"/>
-    <wire from="(500,450)" to="(500,460)"/>
-    <wire from="(500,450)" to="(510,450)"/>
     <wire from="(500,460)" to="(500,500)"/>
     <wire from="(500,460)" to="(510,460)"/>
     <wire from="(500,500)" to="(500,550)"/>
