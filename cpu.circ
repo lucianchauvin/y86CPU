@@ -4851,6 +4851,10 @@
       <a name="fanout" val="3"/>
       <a name="incoming" val="12"/>
     </comp>
+    <comp lib="0" loc="(380,280)" name="Constant">
+      <a name="value" val="0x0"/>
+      <a name="width" val="12"/>
+    </comp>
     <comp lib="2" loc="(440,890)" name="Multiplexer">
       <a name="width" val="12"/>
     </comp>
@@ -4889,8 +4893,15 @@
     <wire from="(370,360)" to="(370,900)"/>
     <wire from="(370,360)" to="(650,360)"/>
     <wire from="(370,900)" to="(410,900)"/>
+    <wire from="(380,280)" to="(650,280)"/>
     <wire from="(380,370)" to="(380,620)"/>
     <wire from="(380,370)" to="(650,370)"/>
+    <wire from="(400,290)" to="(400,300)"/>
+    <wire from="(400,290)" to="(650,290)"/>
+    <wire from="(400,300)" to="(400,310)"/>
+    <wire from="(400,300)" to="(650,300)"/>
+    <wire from="(400,310)" to="(400,320)"/>
+    <wire from="(400,310)" to="(650,310)"/>
     <wire from="(400,320)" to="(400,880)"/>
     <wire from="(400,320)" to="(630,320)"/>
     <wire from="(400,880)" to="(410,880)"/>
