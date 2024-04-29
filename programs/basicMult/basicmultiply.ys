@@ -1,7 +1,6 @@
 
     .pos 0
     irmovq stack, %rsp
-    irmovq stack, %rsp
     call main 
     halt
     
