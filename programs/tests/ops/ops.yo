@@ -1,0 +1,6 @@
+0x000: 30f01400000000000000 | irmovq $20, %rax
+0x00a: 30f11e00000000000000 | irmovq $30, %rcx
+0x014: 6001                 | addq %rax, %rcx
+0x016: 30f01400000000000000 | irmovq $20, %rax
+0x020: 30f11e00000000000000 | irmovq $30, %rcx
+0x02a: 6101                 | subq %rax, %rcx

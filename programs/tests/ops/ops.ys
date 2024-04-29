@@ -1,0 +1,6 @@
+irmovq $20, %rax
+irmovq $30, %rcx
+addq %rax, %rcx
+irmovq $20, %rax
+irmovq $30, %rcx
+subq %rax, %rcx
