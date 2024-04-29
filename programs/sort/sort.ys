@@ -1,0 +1,72 @@
+
+    .pos 0
+    irmovq stack, %rsp
+    irmovq stack, %rbp
+    call main 
+    halt
+    
+
+main:
+    irmovq $5, %rcx #size of the array we are going to sort
+    irmovq $0x300, %rdx #pointer for array
+    #populate the array with values
+    irmovq $7, %rbx
+    rmmovq %rbx, 0(%rdx)
+    irmovq $5, %rbx
+    rmmovq %rbx, 8(%rdx)
+    irmovq $6, %rbx
+    rmmovq %rbx, 16(%rdx)
+    irmovq $8, %rbx
+    rmmovq %rbx, 24(%rdx)
+    irmovq $1, %rbx
+    rmmovq %rbx, 32(%rdx)
+    pushq %rdx
+    pushq %rcx
+
+    call sort
+    popq %r8
+    popq %r8
+    ret
+
+sort:
+    mrmovq 8(%rsp), %r8    #store size into register 8   
+    mrmovq 16(%rsp), %r9   #store pointer of array to register 9
+    rrmovq %r8, %r10        #store i into register 10
+    irmovq $0, %r11         #store constant 0
+    irmovq $1, %r12         #store constant 1
+    irmovq $8, %rcx
+
+outerloop:
+    subq %r11, %r10  #check if i == 0
+    je sortdone     #if so, we are done
+    subq %r12, %r10 #otherwise decrease i and go to inner loop
+    
+innerloop:
+    rrmovq %r8, %r13 #j = n
+
+    rrmovq %r9, %r14 #j8 = points to first element in array
+    
+innerloopstart:
+    addq %rcx, %r14 #j8 += 8
+    subq %r12, %r13 #j--
+    je outerloop    #if j - size == 0, go back to outer loop
+
+    #compare elements at indices j - 1 and j
+    mrmovq -8(%r14), %rsi
+    mrmovq (%r14), %rdi
+    subq %rsi, %rdi #CC = a[j] - a[j-1]
+    jge innerloopstart #if >= , then we don't swap
+    
+    #we swap if we make it here
+    addq %rsi, %rdi
+    rmmovq %rsi, (%r14)
+    rmmovq %rdi, -8(%r14)
+    
+    jmp innerloopstart
+    
+sortdone:
+    ret
+    
+    .pos 0x200
+stack:
+
