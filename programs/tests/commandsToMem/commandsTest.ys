@@ -1,0 +1,11 @@
+halt
+nop
+rrmovq %rax, %rcx
+irmovq $48, %rax
+rmmovq %rax, $0
+mrmovq $0, %rdx
+addq %rax, %rcx
+call $1923123
+ret
+pushq %rax
+popq %rax

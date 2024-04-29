@@ -20,8 +20,14 @@ def parse(line):
     for offset in range(num_bytes):
         print('offset: %d, idx: %d' % (offset, offset*2))
         data_split += data[offset*2:offset*2+2] + ' '
-    print(addr,data_split[:-1])
-    return addr, data_split[:-1]
+    data_split = data_split[:-1]
+    match int(data_split[0], 16):
+        case 3 | 4 | 5:
+            data_split = data_split[:6] + " ".join([x[::-1] for x in "".join(data_split[6::][::-1]).split(" ")])
+        case 7 | 8:
+            data_split = data_split[:3] + " ".join([x[::-1] for x in "".join(data_split[3::][::-1]).split(" ")])
+    print(addr,'"',data_split,'"')
+    return addr, data_split
 
 def add(memory, addr, data):
     #assert(len(data) % 2 == 0)

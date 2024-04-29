@@ -1,0 +1,11 @@
+0x000: 00                   | halt
+0x001: 10                   | nop
+0x002: 2001                 | rrmovq %rax, %rcx
+0x004: 30f03000000000000000 | irmovq $48, %rax
+0x00e: 400f0000000000000000 | rmmovq %rax, $0
+0x018: 502f0000000000000000 | mrmovq $0, %rdx
+0x022: 6001                 | addq %rax, %rcx
+0x024: 8033581d0000000000   | call $1923123
+0x02d: 90                   | ret
+0x02e: a00f                 | pushq %rax
+0x030: b00f                 | popq %rax
