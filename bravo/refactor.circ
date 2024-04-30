@@ -4862,6 +4862,7 @@
     <comp lib="0" loc="(920,360)" name="Constant"/>
     <comp lib="1" loc="(1390,910)" name="AND Gate">
       <a name="facing" val="north"/>
+      <a name="negate0" val="true"/>
       <a name="size" val="30"/>
     </comp>
     <comp lib="1" loc="(760,1190)" name="AND Gate">
@@ -4907,7 +4908,7 @@
     <wire from="(1240,1170)" to="(1400,1170)"/>
     <wire from="(1250,1090)" to="(1270,1090)"/>
     <wire from="(1270,1060)" to="(1270,1090)"/>
-    <wire from="(1380,940)" to="(1380,990)"/>
+    <wire from="(1380,950)" to="(1380,990)"/>
     <wire from="(1390,490)" to="(1390,910)"/>
     <wire from="(1400,940)" to="(1400,1170)"/>
     <wire from="(250,710)" to="(290,710)"/>
