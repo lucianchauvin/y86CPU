@@ -35,7 +35,7 @@ main:
 sort:
     mrmovq 8(%rsp), %r8    #store size into register 8   
     mrmovq 16(%rsp), %r9   #store pointer of array to register 9
-    rrmovq %r8, %r10        #store i into register 10
+    mrmovq 8(%rsp), %r10
     irmovq $0, %r11         #store constant 0
     irmovq $1, %r12         #store constant 1
     irmovq $8, %rcx
@@ -46,9 +46,8 @@ outerloop:
     subq %r12, %r10 #otherwise decrease i and go to inner loop
     
 innerloop:
-    rrmovq %r8, %r13 #j = n
-
-    rrmovq %r9, %r14 #j8 = points to first element in array
+    mrmovq 8(%rsp), %r13
+    mrmovq 16(%rsp), %r14
     
 innerloopstart:
     addq %rcx, %r14 #j8 += 8
