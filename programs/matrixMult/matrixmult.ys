@@ -1,0 +1,182 @@
+
+    .pos 0
+    irmovq stack, %rsp
+    call main 
+    halt
+    
+
+main:
+    irmovq $0x500, %rdx #pointer for array
+    #populate the array with values
+    irmovq $1, %rbx
+    rmmovq %rbx, 0(%rdx)
+    irmovq $2, %rbx
+    rmmovq %rbx, 8(%rdx)
+    irmovq $3, %rbx
+    rmmovq %rbx, 16(%rdx)
+    irmovq $4, %rbx
+    rmmovq %rbx, 24(%rdx)
+    irmovq $5, %rbx
+    rmmovq %rbx, 32(%rdx)
+    irmovq $6, %rbx
+    rmmovq %rbx, 40(%rdx)
+    irmovq $7, %rbx
+    rmmovq %rbx, 48(%rdx)
+    irmovq $8, %rbx
+    rmmovq %rbx, 56(%rdx)
+
+    pushq %rdx
+    call matrixmultiply
+    popq %r8
+    ret
+
+matrixmultiply:
+
+
+    mrmovq 8(%rsp), %rbx   #pointer to first matrix
+    
+    irmovq $0, %rax
+    
+    rmmovq %rax, 64(%rbx)
+    rmmovq %rax, 72(%rbx)
+    rmmovq %rax, 80(%rbx)
+    rmmovq %rax, 88(%rbx)
+    
+    mrmovq (%rbx), %rcx
+    pushq %rcx
+    mrmovq 32(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 64(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 64(%rbx)
+    
+    mrmovq 8(%rbx), %rcx
+    pushq %rcx
+    mrmovq 48(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 64(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 64(%rbx)
+    
+    mrmovq (%rbx), %rcx
+    pushq %rcx
+    mrmovq 40(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 72(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 72(%rbx)
+    
+    mrmovq 8(%rbx), %rcx
+    pushq %rcx
+    mrmovq 56(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 72(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 72(%rbx)
+    
+    mrmovq 16(%rbx), %rcx
+    pushq %rcx
+    mrmovq 32(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 80(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 80(%rbx)
+    
+    mrmovq 24(%rbx), %rcx
+    pushq %rcx
+    mrmovq 48(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 80(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 80(%rbx)
+    
+    mrmovq 16(%rbx), %rcx
+    pushq %rcx
+    mrmovq 40(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 88(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 88(%rbx)
+    
+    mrmovq 24(%rbx), %rcx
+    pushq %rcx
+    mrmovq 56(%rbx), %rcx
+    pushq %rcx
+    call multiply
+    popq %r13
+    popq %r13
+    mrmovq 88(%rbx), %rcx
+    addq %rax, %rcx
+    rmmovq %rcx, 88(%rbx)
+    
+multiply:
+    mrmovq 8(%rsp), %r8
+    mrmovq 16(%rsp), %r9
+    irmovq $0, %rax         #set result to 0
+    irmovq $0, %r10         #register used for constant 0
+    irmovq $1, %r11         #register used for constant 1
+    
+multiplyloopa:
+    subq %r10, %r8 #check if a != 0
+    je multiplydone   #if a = 0, we are done
+    subq %r11, %r8 #decrease a by 1.
+    addq %r9, %rax
+    jne multiplyloopa
+    
+multiplydone:
+    ret
+    
+    #set up constants
+    irmovq $1, %rax
+    irmovq $0, %r11
+    irmovq $1, %r12
+    irmovq $8, %r13
+    
+    #set up hi pointer
+    mrmovq 16(%rsp), %r10   #hi pointer
+increasehi:
+    subq %r12, %r8
+    je next
+    addq %r13, %r10
+    jmp increasehi
+next:
+    
+    mrmovq 8(%rsp), %r8
+loop:
+    subq %r12, %r8
+    je ispaldone
+    mrmovq (%r9), %rsi
+    mrmovq (%r10), %rdi
+    subq %rsi, %rdi
+    je ok 
+    irmovq $0, %rax
+ok:
+    jmp loop
+    
+ispaldone:
+    ret
+    
+    .pos 0x5f8
+stack:
+
