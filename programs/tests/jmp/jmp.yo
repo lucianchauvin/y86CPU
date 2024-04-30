@@ -1,0 +1,53 @@
+0x000: 30f40002000000000000 | irmovq $0x200, %rsp
+                            |     
+0x00a: 30f10500000000000000 |     irmovq $5, %rcx #size of the array we are going to sort
+0x014: 30f20003000000000000 |     irmovq $0x300, %rdx #pointer for array
+0x01e: 30f30700000000000000 |     irmovq $7, %rbx #populate the array with values
+0x028: 40320000000000000000 |     rmmovq %rbx, 0(%rdx)
+0x032: 30f30500000000000000 |     irmovq $5, %rbx
+0x03c: 40320800000000000000 |     rmmovq %rbx, 8(%rdx)
+0x046: 30f30600000000000000 |     irmovq $6, %rbx
+0x050: 40321000000000000000 |     rmmovq %rbx, 16(%rdx)
+0x05a: 30f30800000000000000 |     irmovq $8, %rbx
+0x064: 40321800000000000000 |     rmmovq %rbx, 24(%rdx)
+0x06e: 30f30100000000000000 |     irmovq $1, %rbx
+0x078: 40322000000000000000 |     rmmovq %rbx, 32(%rdx)
+                            | 
+0x082: 2018                 |     rrmovq %rcx, %r8    #store size into register 8   
+0x084: 2029                 |     rrmovq %rdx, %r9   #store pointer of array to register 9
+0x086: 208a                 |     rrmovq %r8, %r10
+0x088: 30fb0000000000000000 |     irmovq $0, %r11         #store constant 0
+0x092: 30fc0100000000000000 |     irmovq $1, %r12         #store constant 1
+0x09c: 30f10800000000000000 |     irmovq $8, %rcx
+                            | 
+0x0a6:                      | outerloop:
+0x0a6: 61ba                 |     subq %r11, %r10  #check if i == 0
+0x0a8: 730a01000000000000   |     je sortdone     #if so, we are done
+0x0b1: 61ca                 |     subq %r12, %r10 #otherwise decrease i and go to inner loop
+                            |     
+0x0b3:                      | innerloop:
+0x0b3: 208d                 |     rrmovq %r8, %r13
+0x0b5: 202e                 |     rrmovq %rdx, %r14
+                            |     
+0x0b7:                      | innerloopstart:
+0x0b7: 601e                 |     addq %rcx, %r14 #j8 += 8
+0x0b9: 61cd                 |     subq %r12, %r13 #j--
+0x0bb: 73a600000000000000   |     je outerloop    #if j - size == 0, go back to outer loop
+                            |     
+0x0c4: 611e                 |     subq %rcx, %r14   #compare elements at indices j - 1 and j
+0x0c6: 506e0000000000000000 |     mrmovq (%r14), %rsi
+0x0d0: 507e0800000000000000 |     mrmovq 8(%r14), %rdi
+0x0da: 601e                 |     addq %rcx, %r14
+0x0dc: 6167                 |     subq %rsi, %rdi #CC = a[j] - a[j-1]
+0x0de: 75b700000000000000   |     jge innerloopstart #if >= , then we don't swap
+                            |     #we swap if we make it here
+0x0e7: 6067                 |     addq %rsi, %rdi
+                            |     
+0x0e9: 406e0000000000000000 |     rmmovq %rsi, (%r14)
+0x0f3: 611e                 |     subq %rcx, %r14
+0x0f5: 407e0000000000000000 |     rmmovq %rdi, (%r14)
+0x0ff: 601e                 |     addq %rcx, %r14
+0x101: 70b700000000000000   |     jmp innerloopstart
+                            |     
+0x10a:                      | sortdone:
+0x10a: 00                   |     halt

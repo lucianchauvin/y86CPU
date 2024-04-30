@@ -1,0 +1,4 @@
+0x000: 30f00100000000000000 |     irmovq $1, %rax
+0x00a: 2001                 |     rrmovq %rax, %rcx
+0x00c: 2011                 |     rrmovq %rcx, %rcx
+0x00e: 2022                 |     rrmovq %rdx, %rdx
