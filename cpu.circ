@@ -51,7 +51,6 @@
     <sep/>
     <tool lib="0" name="Pin"/>
     <tool lib="0" name="Pin">
-      <a name="facing" val="west"/>
       <a name="output" val="true"/>
     </tool>
     <sep/>
@@ -98,9 +97,10 @@
       <a name="appearance" val="NewPins"/>
       <a name="label" val="e"/>
     </comp>
-    <comp lib="1" loc="(1010,290)" name="OR Gate">
+    <comp lib="1" loc="(1010,270)" name="OR Gate">
       <a name="facing" val="south"/>
       <a name="inputs" val="8"/>
+      <a name="size" val="30"/>
     </comp>
     <comp lib="1" loc="(1160,370)" name="AND Gate">
       <a name="facing" val="south"/>
@@ -125,9 +125,10 @@
       <a name="facing" val="south"/>
       <a name="size" val="30"/>
     </comp>
-    <comp lib="1" loc="(910,300)" name="OR Gate">
+    <comp lib="1" loc="(910,280)" name="OR Gate">
       <a name="facing" val="south"/>
       <a name="inputs" val="10"/>
+      <a name="size" val="30"/>
     </comp>
     <comp lib="2" loc="(150,160)" name="Multiplexer">
       <a name="facing" val="south"/>
@@ -173,7 +174,7 @@
     <wire from="(1000,200)" to="(1000,240)"/>
     <wire from="(1010,200)" to="(1010,220)"/>
     <wire from="(1010,220)" to="(1050,220)"/>
-    <wire from="(1010,290)" to="(1010,310)"/>
+    <wire from="(1010,270)" to="(1010,310)"/>
     <wire from="(1010,310)" to="(1170,310)"/>
     <wire from="(1020,200)" to="(1020,240)"/>
     <wire from="(1030,200)" to="(1030,240)"/>
@@ -356,7 +357,7 @@
     <wire from="(900,200)" to="(900,250)"/>
     <wire from="(910,200)" to="(910,240)"/>
     <wire from="(910,240)" to="(960,240)"/>
-    <wire from="(910,300)" to="(910,310)"/>
+    <wire from="(910,280)" to="(910,310)"/>
     <wire from="(920,200)" to="(920,250)"/>
     <wire from="(930,200)" to="(930,250)"/>
     <wire from="(940,200)" to="(940,250)"/>
@@ -552,13 +553,22 @@
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 12 8
 30 f4 6*0 2 0 80 7*0 14
-0 30 f1 7*0 7 30 f2 7*0
-b a0 1f a0 2f 80 7*0 3a
+0 30 f1 7*0 5 30 f2 6*0
+3 0 30 f3 7*0 1 40 32
+8*0 30 f3 7*0 2 40 32 7*0
+8 30 f3 7*0 3 40 32 7*0
+10 30 f3 7*0 2 40 32 7*0
+18 30 f3 7*0 1 40 32 7*0
+20 a0 2f a0 1f 80 7*0 9e
 b0 8f b0 8f 90 50 84 7*0
-8 50 94 7*0 10 30 f0 8*0
-30 fa 8*0 30 fb 7*0 1 61
-a8 73 7*0 84 61 b8 60 90
-74 7*0 6c 90
+8 50 94 7*0 10 30 f0 7*0
+1 30 fb 8*0 30 fc 7*0 1
+30 fd 7*0 8 50 a4 7*0 10
+61 c8 73 7*0 fa 60 da 70
+7*0 e4 50 84 7*0 8 61 c8
+73 6*0 1 41 50 69 8*0 50
+7a 8*0 61 67 73 6*0 1 38
+30 f0 8*0 70 6*0 1 4 90
 </a>
     </comp>
     <comp lib="4" loc="(820,180)" name="Register">
@@ -2770,9 +2780,9 @@ a8 73 7*0 84 61 b8 60 90
     <wire from="(300,650)" to="(710,650)"/>
     <wire from="(380,270)" to="(380,280)"/>
     <wire from="(380,270)" to="(540,270)"/>
-    <wire from="(380,280)" to="(380,410)"/>
-    <wire from="(380,410)" to="(380,480)"/>
-    <wire from="(380,410)" to="(540,410)"/>
+    <wire from="(380,280)" to="(380,390)"/>
+    <wire from="(380,390)" to="(380,480)"/>
+    <wire from="(380,390)" to="(540,390)"/>
     <wire from="(380,480)" to="(380,600)"/>
     <wire from="(380,480)" to="(550,480)"/>
     <wire from="(380,600)" to="(550,600)"/>
@@ -2781,9 +2791,9 @@ a8 73 7*0 84 61 b8 60 90
     <wire from="(390,520)" to="(390,560)"/>
     <wire from="(390,520)" to="(550,520)"/>
     <wire from="(390,560)" to="(550,560)"/>
-    <wire from="(450,230)" to="(450,390)"/>
+    <wire from="(450,230)" to="(450,410)"/>
     <wire from="(450,230)" to="(490,230)"/>
-    <wire from="(450,390)" to="(540,390)"/>
+    <wire from="(450,410)" to="(540,410)"/>
     <wire from="(490,230)" to="(490,250)"/>
     <wire from="(490,250)" to="(540,250)"/>
     <wire from="(560,280)" to="(560,360)"/>

@@ -11,7 +11,7 @@ main:
     #populate the array with values
     irmovq $1, %rbx
     rmmovq %rbx, 0(%rdx)
-    irmovq $2, %rbx
+    irmovq $0, %rbx
     rmmovq %rbx, 8(%rdx)
     irmovq $3, %rbx
     rmmovq %rbx, 16(%rdx)

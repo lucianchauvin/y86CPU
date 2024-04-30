@@ -1,0 +1,66 @@
+                            | 
+0x000:                      |     .pos 0
+0x000: 30f40002000000000000 |     irmovq stack, %rsp
+0x00a: 801400000000000000   |     call main 
+0x013: 00                   |     halt
+                            |     
+                            | 
+0x014:                      | main:
+0x014: 30f10500000000000000 |     irmovq $5, %rcx #size of the array we are going to sort
+0x01e: 30f20003000000000000 |     irmovq $0x300, %rdx #pointer for array
+                            |     #populate the array with values
+0x028: 30f30100000000000000 |     irmovq $1, %rbx
+0x032: 40320000000000000000 |     rmmovq %rbx, 0(%rdx)
+0x03c: 30f30000000000000000 |     irmovq $0, %rbx
+0x046: 40320800000000000000 |     rmmovq %rbx, 8(%rdx)
+0x050: 30f30300000000000000 |     irmovq $3, %rbx
+0x05a: 40321000000000000000 |     rmmovq %rbx, 16(%rdx)
+0x064: 30f30200000000000000 |     irmovq $2, %rbx
+0x06e: 40321800000000000000 |     rmmovq %rbx, 24(%rdx)
+0x078: 30f30100000000000000 |     irmovq $1, %rbx
+0x082: 40322000000000000000 |     rmmovq %rbx, 32(%rdx)
+0x08c: a02f                 |     pushq %rdx
+0x08e: a01f                 |     pushq %rcx
+                            | 
+0x090: 809e00000000000000   |     call ispal
+0x099: b08f                 |     popq %r8
+0x09b: b08f                 |     popq %r8
+0x09d: 90                   |     ret
+                            | 
+0x09e:                      | ispal:
+0x09e: 50840800000000000000 |     mrmovq 8(%rsp), %r8    #store size into register 8   
+0x0a8: 50941000000000000000 |     mrmovq 16(%rsp), %r9   #store pointer of array to register 9
+                            |     
+                            |     #set up constants
+0x0b2: 30f00100000000000000 |     irmovq $1, %rax
+0x0bc: 30fb0000000000000000 |     irmovq $0, %r11
+0x0c6: 30fc0100000000000000 |     irmovq $1, %r12
+0x0d0: 30fd0800000000000000 |     irmovq $8, %r13
+                            |     
+                            |     #set up hi pointer
+0x0da: 50a41000000000000000 |     mrmovq 16(%rsp), %r10   #hi pointer
+0x0e4:                      | increasehi:
+0x0e4: 61c8                 |     subq %r12, %r8
+0x0e6: 73fa00000000000000   |     je next
+0x0ef: 60da                 |     addq %r13, %r10
+0x0f1: 70e400000000000000   |     jmp increasehi
+0x0fa:                      | next:
+                            |     
+0x0fa: 50840800000000000000 |     mrmovq 8(%rsp), %r8
+0x104:                      | loop:
+0x104: 61c8                 |     subq %r12, %r8
+0x106: 734101000000000000   |     je ispaldone
+0x10f: 50690000000000000000 |     mrmovq (%r9), %rsi
+0x119: 507a0000000000000000 |     mrmovq (%r10), %rdi
+0x123: 6167                 |     subq %rsi, %rdi
+0x125: 733801000000000000   |     je ok 
+0x12e: 30f00000000000000000 |     irmovq $0, %rax
+0x138:                      | ok:
+0x138: 700401000000000000   |     jmp loop
+                            |     
+0x141:                      | ispaldone:
+0x141: 90                   |     ret
+                            |     
+0x200:                      |     .pos 0x200
+0x200:                      | stack:
+                            | 
