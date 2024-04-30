@@ -1,7 +1,6 @@
 
     .pos 0
     irmovq stack, %rsp
-    irmovq stack, %rbp
     call main 
     halt
     
@@ -23,9 +22,14 @@ main:
     pushq %rdx
     pushq %rcx
 
+    nop
+    nop
+    nop
+
     call sort
     popq %r8
     popq %r8
+    
     ret
 
 sort:

@@ -1,0 +1,66 @@
+
+    .pos 0
+    irmovq stack, %rsp
+    call main 
+    halt
+    
+
+main:
+    irmovq $5, %rcx #size of the array we are going to sort
+    irmovq $0x300, %rdx #pointer for array
+    #populate the array with values
+    irmovq $1, %rbx
+    rmmovq %rbx, 0(%rdx)
+    irmovq $2, %rbx
+    rmmovq %rbx, 8(%rdx)
+    irmovq $3, %rbx
+    rmmovq %rbx, 16(%rdx)
+    irmovq $2, %rbx
+    rmmovq %rbx, 24(%rdx)
+    irmovq $1, %rbx
+    rmmovq %rbx, 32(%rdx)
+    pushq %rdx
+    pushq %rcx
+
+    call ispal
+    popq %r8
+    popq %r8
+    ret
+
+ispal:
+    mrmovq 8(%rsp), %r8    #store size into register 8   
+    mrmovq 16(%rsp), %r9   #store pointer of array to register 9
+    
+    #set up constants
+    irmovq $1, %rax
+    irmovq $0, %r11
+    irmovq $1, %r12
+    irmovq $8, %r13
+    
+    #set up hi pointer
+    mrmovq 16(%rsp), %r10   #hi pointer
+increasehi:
+    subq %r12, %r8
+    je next
+    addq %r13, %r10
+    jmp increasehi
+next:
+    
+    mrmovq 8(%rsp), %r8
+loop:
+    subq %r12, %r8
+    je ispaldone
+    mrmovq (%r9), %rsi
+    mrmovq (%r10), %rdi
+    subq %rsi, %rdi
+    je ok 
+    irmovq $0, %rax
+ok:
+    jmp loop
+    
+ispaldone:
+    ret
+    
+    .pos 0x200
+stack:
+
