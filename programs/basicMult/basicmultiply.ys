@@ -6,8 +6,8 @@
     
 
 main:
-    irmovq $7, %rcx
-    irmovq $11, %rdx
+    irmovq $2, %rcx
+    irmovq $2, %rdx
     pushq %rcx
     pushq %rdx
     call multiply
