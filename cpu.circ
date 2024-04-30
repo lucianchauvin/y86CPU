@@ -74,7 +74,7 @@
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="16.0"/>
+    <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(160,130)" name="Constant">
       <a name="facing" val="south"/>
       <a name="value" val="0x0"/>
@@ -1921,6 +1921,51 @@
     <comp lib="4" loc="(690,970)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="width" val="64"/>
+    </comp>
+    <comp lib="8" loc="(707,72)" name="Text">
+      <a name="text" val="rax"/>
+    </comp>
+    <comp lib="8" loc="(708,195)" name="Text">
+      <a name="text" val="rcx"/>
+    </comp>
+    <comp lib="8" loc="(714,316)" name="Text">
+      <a name="text" val="rdx"/>
+    </comp>
+    <comp lib="8" loc="(715,580)" name="Text">
+      <a name="text" val="rsp"/>
+    </comp>
+    <comp lib="8" loc="(716,445)" name="Text">
+      <a name="text" val="rbx"/>
+    </comp>
+    <comp lib="8" loc="(717,957)" name="Text">
+      <a name="text" val="rdi"/>
+    </comp>
+    <comp lib="8" loc="(719,1561)" name="Text">
+      <a name="text" val="r12"/>
+    </comp>
+    <comp lib="8" loc="(719,1691)" name="Text">
+      <a name="text" val="r13"/>
+    </comp>
+    <comp lib="8" loc="(719,1815)" name="Text">
+      <a name="text" val="r14"/>
+    </comp>
+    <comp lib="8" loc="(719,705)" name="Text">
+      <a name="text" val="rbp"/>
+    </comp>
+    <comp lib="8" loc="(720,1079)" name="Text">
+      <a name="text" val="r8"/>
+    </comp>
+    <comp lib="8" loc="(720,1318)" name="Text">
+      <a name="text" val="r10"/>
+    </comp>
+    <comp lib="8" loc="(721,1201)" name="Text">
+      <a name="text" val="r9"/>
+    </comp>
+    <comp lib="8" loc="(721,1435)" name="Text">
+      <a name="text" val="r11"/>
+    </comp>
+    <comp lib="8" loc="(722,828)" name="Text">
+      <a name="text" val="rsi"/>
     </comp>
     <wire from="(1050,150)" to="(1050,240)"/>
     <wire from="(1050,150)" to="(1690,150)"/>
