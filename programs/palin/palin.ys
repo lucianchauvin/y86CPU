@@ -45,7 +45,6 @@ increasehi:
     addq %r13, %r10
     jmp increasehi
 next:
-    
     mrmovq 8(%rsp), %r8
 loop:
     subq %r12, %r8
@@ -56,6 +55,8 @@ loop:
     je ok 
     irmovq $0, %rax
 ok:
+    addq %r13, %r9
+    subq %r13, %r10
     jmp loop
     
 ispaldone:
