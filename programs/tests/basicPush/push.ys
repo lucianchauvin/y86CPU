@@ -1,10 +1,7 @@
-    .pos 0
     irmovq stack, %rsp
-    call main 
+    irmovq $7, %rcx
+    pushq %rcx
     halt
-
-main:
-    ret
 
     .pos 0x200
 stack:

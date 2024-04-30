@@ -4,7 +4,7 @@
 0x013: 00                   |     halt
                             | 
 0x014:                      | main:
-0x014: 90                   |     ret
+0x014: 00                   |     halt
                             | 
 0x200:                      |     .pos 0x200
 0x200:                      | stack:

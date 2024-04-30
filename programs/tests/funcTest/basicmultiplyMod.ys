@@ -4,7 +4,7 @@
     halt
 
 main:
-    ret
+    halt
 
     .pos 0x200
 stack:
