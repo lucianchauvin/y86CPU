@@ -43,7 +43,7 @@ ispal:
     mrmovq 16(%rsp), %r10   #hi pointer
 increasehi:
     subq %r12, %r8
-    rrmovq %r8, %r8
+    #rrmovq %r8, %r8
     je next
     addq %r13, %r10
     jmp increasehi
@@ -53,7 +53,7 @@ loop:
     subq %r12, %r8
     je ispaldone
     mrmovq (%r9), %rsi
-    rrmovq %rsi, %rsi
+    #rrmovq %rsi, %rsi
     mrmovq (%r10), %rdi
     subq %rsi, %rdi
     je ok 

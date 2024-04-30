@@ -35,41 +35,44 @@
 0x0a1:                      | sort:
 0x0a1: 50840800000000000000 |     mrmovq 8(%rsp), %r8    #store size into register 8   
 0x0ab: 50941000000000000000 |     mrmovq 16(%rsp), %r9   #store pointer of array to register 9
-0x0b5: 208a                 |     rrmovq %r8, %r10        #store i into register 10
-0x0b7: 30fb0000000000000000 |     irmovq $0, %r11         #store constant 0
-0x0c1: 30fc0100000000000000 |     irmovq $1, %r12         #store constant 1
-0x0cb: 30f10800000000000000 |     irmovq $8, %rcx
+0x0b5: 50a40800000000000000 |     mrmovq 8(%rsp), %r10
+0x0bf: 30fb0000000000000000 |     irmovq $0, %r11         #store constant 0
+0x0c9: 30fc0100000000000000 |     irmovq $1, %r12         #store constant 1
+0x0d3: 30f10800000000000000 |     irmovq $8, %rcx
                             | 
-0x0d5:                      | outerloop:
-0x0d5: 61ba                 |     subq %r11, %r10  #check if i == 0
-0x0d7: 733101000000000000   |     je sortdone     #if so, we are done
-0x0e0: 61ca                 |     subq %r12, %r10 #otherwise decrease i and go to inner loop
+0x0dd:                      | outerloop:
+0x0dd: 61ba                 |     subq %r11, %r10  #check if i == 0
+0x0df: 735101000000000000   |     je sortdone     #if so, we are done
+0x0e8: 61ca                 |     subq %r12, %r10 #otherwise decrease i and go to inner loop
                             |     
-0x0e2:                      | innerloop:
-0x0e2: 208d                 |     rrmovq %r8, %r13 #j = n
-                            | 
-0x0e4: 209e                 |     rrmovq %r9, %r14 #j8 = points to first element in array
+0x0ea:                      | innerloop:
+0x0ea: 50d40800000000000000 |     mrmovq 8(%rsp), %r13
+0x0f4: 50e41000000000000000 |     mrmovq 16(%rsp), %r14
                             |     
-0x0e6:                      | innerloopstart:
-0x0e6: 601e                 |     addq %rcx, %r14 #j8 += 8
-0x0e8: 61cd                 |     subq %r12, %r13 #j--
-0x0ea: 73d500000000000000   |     je outerloop    #if j - size == 0, go back to outer loop
+0x0fe:                      | innerloopstart:
+0x0fe: 601e                 |     addq %rcx, %r14 #j8 += 8
+0x100: 61cd                 |     subq %r12, %r13 #j--
+0x102: 73dd00000000000000   |     je outerloop    #if j - size == 0, go back to outer loop
                             | 
                             |     #compare elements at indices j - 1 and j
-0x0f3: 506ef8ffffffffffffff |     mrmovq -8(%r14), %rsi
-0x0fd: 507e0000000000000000 |     mrmovq (%r14), %rdi
-0x107: 6167                 |     subq %rsi, %rdi #CC = a[j] - a[j-1]
-0x109: 75e600000000000000   |     jge innerloopstart #if >= , then we don't swap
+0x10b: 611e                 |     subq %rcx, %r14
+0x10d: 506e0000000000000000 |     mrmovq (%r14), %rsi
+0x117: 507e0800000000000000 |     mrmovq 8(%r14), %rdi
+0x121: 601e                 |     addq %rcx, %r14
+0x123: 6167                 |     subq %rsi, %rdi #CC = a[j] - a[j-1]
+0x125: 75fe00000000000000   |     jge innerloopstart #if >= , then we don't swap
                             |     
                             |     #we swap if we make it here
-0x112: 6067                 |     addq %rsi, %rdi
-0x114: 406e0000000000000000 |     rmmovq %rsi, (%r14)
-0x11e: 407ef8ffffffffffffff |     rmmovq %rdi, -8(%r14)
+0x12e: 6067                 |     addq %rsi, %rdi
                             |     
-0x128: 70e600000000000000   |     jmp innerloopstart
+0x130: 406e0000000000000000 |     rmmovq %rsi, (%r14)
+0x13a: 611e                 |     subq %rcx, %r14
+0x13c: 407e0000000000000000 |     rmmovq %rdi, (%r14)
+0x146: 601e                 |     addq %rcx, %r14
+0x148: 70fe00000000000000   |     jmp innerloopstart
                             |     
-0x131:                      | sortdone:
-0x131: 90                   |     ret
+0x151:                      | sortdone:
+0x151: 90                   |     ret
                             |     
 0x200:                      |     .pos 0x200
 0x200:                      | stack:
