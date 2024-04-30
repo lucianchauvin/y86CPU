@@ -178,7 +178,7 @@
     <wire from="(1020,200)" to="(1020,240)"/>
     <wire from="(1030,200)" to="(1030,240)"/>
     <wire from="(1040,200)" to="(1040,210)"/>
-    <wire from="(1040,210)" to="(1040,240)"/>
+    <wire from="(1040,210)" to="(1040,230)"/>
     <wire from="(1040,210)" to="(1060,210)"/>
     <wire from="(1050,220)" to="(1050,240)"/>
     <wire from="(1050,60)" to="(1050,200)"/>
@@ -360,7 +360,7 @@
     <wire from="(920,200)" to="(920,250)"/>
     <wire from="(930,200)" to="(930,250)"/>
     <wire from="(940,200)" to="(940,250)"/>
-    <wire from="(950,200)" to="(950,250)"/>
+    <wire from="(950,200)" to="(950,230)"/>
     <wire from="(960,150)" to="(960,200)"/>
     <wire from="(960,240)" to="(960,250)"/>
     <wire from="(970,200)" to="(970,240)"/>
@@ -551,9 +551,13 @@
       <a name="addrWidth" val="12"/>
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 12 8
-30 f0 7*0 14 30 f1 7*0 1e
-60 1 30 f0 7*0 14 30 f1
-7*0 1e 61 1
+30 f4 6*0 2 0 30 f4 6*0
+2 0 80 7*0 1e 0 30 f1
+7*0 7 30 f2 7*0 b 0 50
+84 7*0 8 50 94 7*0 10 30
+f0 8*0 30 fa 8*0 30 fb 7*0
+1 61 a8 73 7*0 7d 61 b8
+60 90 74 7*0 65 90
 </a>
     </comp>
     <comp lib="4" loc="(820,180)" name="Register">
@@ -1922,49 +1926,49 @@
       <a name="appearance" val="logisim_evolution"/>
       <a name="width" val="64"/>
     </comp>
-    <comp lib="8" loc="(707,72)" name="Text">
-      <a name="text" val="rax"/>
-    </comp>
-    <comp lib="8" loc="(708,195)" name="Text">
+    <comp lib="8" loc="(705,195)" name="Text">
       <a name="text" val="rcx"/>
     </comp>
-    <comp lib="8" loc="(714,316)" name="Text">
+    <comp lib="8" loc="(705,70)" name="Text">
+      <a name="text" val="rax"/>
+    </comp>
+    <comp lib="8" loc="(710,315)" name="Text">
       <a name="text" val="rdx"/>
+    </comp>
+    <comp lib="8" loc="(715,1560)" name="Text">
+      <a name="text" val="r12"/>
+    </comp>
+    <comp lib="8" loc="(715,1690)" name="Text">
+      <a name="text" val="r13"/>
+    </comp>
+    <comp lib="8" loc="(715,1815)" name="Text">
+      <a name="text" val="r14"/>
+    </comp>
+    <comp lib="8" loc="(715,445)" name="Text">
+      <a name="text" val="rbx"/>
     </comp>
     <comp lib="8" loc="(715,580)" name="Text">
       <a name="text" val="rsp"/>
     </comp>
-    <comp lib="8" loc="(716,445)" name="Text">
-      <a name="text" val="rbx"/>
-    </comp>
-    <comp lib="8" loc="(717,957)" name="Text">
-      <a name="text" val="rdi"/>
-    </comp>
-    <comp lib="8" loc="(719,1561)" name="Text">
-      <a name="text" val="r12"/>
-    </comp>
-    <comp lib="8" loc="(719,1691)" name="Text">
-      <a name="text" val="r13"/>
-    </comp>
-    <comp lib="8" loc="(719,1815)" name="Text">
-      <a name="text" val="r14"/>
-    </comp>
-    <comp lib="8" loc="(719,705)" name="Text">
+    <comp lib="8" loc="(715,705)" name="Text">
       <a name="text" val="rbp"/>
     </comp>
-    <comp lib="8" loc="(720,1079)" name="Text">
+    <comp lib="8" loc="(715,955)" name="Text">
+      <a name="text" val="rdi"/>
+    </comp>
+    <comp lib="8" loc="(720,1075)" name="Text">
       <a name="text" val="r8"/>
     </comp>
-    <comp lib="8" loc="(720,1318)" name="Text">
-      <a name="text" val="r10"/>
-    </comp>
-    <comp lib="8" loc="(721,1201)" name="Text">
+    <comp lib="8" loc="(720,1200)" name="Text">
       <a name="text" val="r9"/>
     </comp>
-    <comp lib="8" loc="(721,1435)" name="Text">
+    <comp lib="8" loc="(720,1315)" name="Text">
+      <a name="text" val="r10"/>
+    </comp>
+    <comp lib="8" loc="(720,1435)" name="Text">
       <a name="text" val="r11"/>
     </comp>
-    <comp lib="8" loc="(722,828)" name="Text">
+    <comp lib="8" loc="(720,825)" name="Text">
       <a name="text" val="rsi"/>
     </comp>
     <wire from="(1050,150)" to="(1050,240)"/>
@@ -3745,7 +3749,6 @@
       <a name="selloc" val="tr"/>
       <a name="width" val="4"/>
     </comp>
-    <wire from="(100,1000)" to="(270,1000)"/>
     <wire from="(100,190)" to="(100,470)"/>
     <wire from="(100,470)" to="(100,480)"/>
     <wire from="(100,470)" to="(270,470)"/>
@@ -3766,9 +3769,15 @@
     <wire from="(140,710)" to="(140,770)"/>
     <wire from="(140,710)" to="(270,710)"/>
     <wire from="(140,770)" to="(270,770)"/>
-    <wire from="(150,1030)" to="(230,1030)"/>
+    <wire from="(150,1030)" to="(210,1030)"/>
     <wire from="(160,540)" to="(230,540)"/>
     <wire from="(170,230)" to="(240,230)"/>
+    <wire from="(210,1000)" to="(210,1030)"/>
+    <wire from="(210,1000)" to="(270,1000)"/>
+    <wire from="(210,1030)" to="(220,1030)"/>
+    <wire from="(220,1010)" to="(220,1030)"/>
+    <wire from="(220,1010)" to="(270,1010)"/>
+    <wire from="(220,1030)" to="(230,1030)"/>
     <wire from="(220,140)" to="(220,160)"/>
     <wire from="(220,140)" to="(270,140)"/>
     <wire from="(220,160)" to="(220,180)"/>
@@ -3790,8 +3799,6 @@
     <wire from="(240,210)" to="(240,230)"/>
     <wire from="(240,210)" to="(270,210)"/>
     <wire from="(240,230)" to="(270,230)"/>
-    <wire from="(260,1010)" to="(260,1040)"/>
-    <wire from="(260,1010)" to="(270,1010)"/>
     <wire from="(260,1040)" to="(260,1050)"/>
     <wire from="(260,1040)" to="(270,1040)"/>
     <wire from="(260,1050)" to="(260,1060)"/>
@@ -3873,7 +3880,7 @@
     <wire from="(260,960)" to="(270,960)"/>
     <wire from="(260,970)" to="(260,990)"/>
     <wire from="(260,970)" to="(270,970)"/>
-    <wire from="(260,990)" to="(260,1010)"/>
+    <wire from="(260,990)" to="(260,1040)"/>
     <wire from="(260,990)" to="(270,990)"/>
     <wire from="(290,100)" to="(290,120)"/>
     <wire from="(290,100)" to="(340,100)"/>
