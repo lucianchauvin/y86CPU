@@ -56,16 +56,20 @@ innerloopstart:
     je outerloop    #if j - size == 0, go back to outer loop
 
     #compare elements at indices j - 1 and j
-    mrmovq -8(%r14), %rsi
-    mrmovq (%r14), %rdi
+    subq %rcx, %r14
+    mrmovq (%r14), %rsi
+    mrmovq 8(%r14), %rdi
+    addq %rcx, %r14
     subq %rsi, %rdi #CC = a[j] - a[j-1]
     jge innerloopstart #if >= , then we don't swap
     
     #we swap if we make it here
     addq %rsi, %rdi
-    rmmovq %rsi, (%r14)
-    rmmovq %rdi, -8(%r14)
     
+    rmmovq %rsi, (%r14)
+    subq %rcx, %r14
+    rmmovq %rdi, (%r14)
+    addq %rcx, %r14
     jmp innerloopstart
     
 sortdone:
