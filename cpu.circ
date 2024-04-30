@@ -553,11 +553,11 @@
       <a name="contents">addr/data: 12 8
 30 f4 6*0 2 0 30 f4 6*0
 2 0 80 7*0 1e 0 30 f1
-7*0 7 30 f2 7*0 b 0 50
-84 7*0 8 50 94 7*0 10 30
-f0 8*0 30 fa 8*0 30 fb 7*0
-1 61 a8 73 7*0 7d 61 b8
-60 90 74 7*0 65 90
+7*0 7 30 f2 7*0 b a0 1f
+a0 2f 80 7*0 44 b0 8f b0
+8f 90 50 84 7*0 8 50 94
+7*0 10 30 f0 8*0 30 fa 8*0
+30 fb 7*0 1 90
 </a>
     </comp>
     <comp lib="4" loc="(820,180)" name="Register">
@@ -3259,7 +3259,7 @@ f0 8*0 30 fa 8*0 30 fb 7*0
     <a name="circuit" val="execute"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(1260,310)" name="Pin">
+    <comp lib="0" loc="(1610,310)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
       <a name="label" val="ValE"/>
@@ -3305,12 +3305,16 @@ f0 8*0 30 fa 8*0 30 fb 7*0
       <a name="radix" val="16"/>
       <a name="width" val="64"/>
     </comp>
+    <comp lib="4" loc="(1410,280)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="width" val="64"/>
+    </comp>
     <comp loc="(1210,310)" name="ALU"/>
     <comp loc="(1680,740)" name="CC"/>
     <comp loc="(850,310)" name="ALUA"/>
     <comp loc="(850,440)" name="ALUB"/>
     <comp loc="(860,560)" name="ALUfun"/>
-    <wire from="(1210,310)" to="(1260,310)"/>
+    <wire from="(1210,310)" to="(1410,310)"/>
     <wire from="(1210,330)" to="(1270,330)"/>
     <wire from="(1210,350)" to="(1310,350)"/>
     <wire from="(1210,370)" to="(1320,370)"/>
@@ -3320,8 +3324,12 @@ f0 8*0 30 fa 8*0 30 fb 7*0
     <wire from="(1310,780)" to="(1460,780)"/>
     <wire from="(1320,370)" to="(1320,820)"/>
     <wire from="(1320,820)" to="(1460,820)"/>
+    <wire from="(1370,350)" to="(1370,840)"/>
+    <wire from="(1370,350)" to="(1410,350)"/>
+    <wire from="(1370,840)" to="(1460,840)"/>
+    <wire from="(1470,310)" to="(1610,310)"/>
     <wire from="(320,810)" to="(320,840)"/>
-    <wire from="(320,840)" to="(1460,840)"/>
+    <wire from="(320,840)" to="(1370,840)"/>
     <wire from="(350,300)" to="(420,300)"/>
     <wire from="(350,330)" to="(450,330)"/>
     <wire from="(360,440)" to="(480,440)"/>
