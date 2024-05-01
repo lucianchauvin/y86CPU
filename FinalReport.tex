@@ -45,6 +45,9 @@
 \end{tabular}
 \end{adjustbox}
 \end{center}
+\section{Timing Diagrams}
+Timing diagrams help represent the behavior of signals in the CPU for each clock cycle. Each clock cycle allows for the CPU to update values and perform calculations needed for each value of iCode. Below are the following clock cycles for each value of iCode:
+\subsection{}
 \section{Fetch Implementation}
 Our design is basically a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes in from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on if we read in registers or if we read in a  \verb+valC+ we increment our \verb+PC+ using our PC increment module.
 \subsection{Fetch}
@@ -141,6 +144,12 @@ The memory read and write circuit takes in the iCode value and determines if we 
 The memory data and memory address circuit uses iCode, valA, valE, and valP to find the data and the address where we will write the data. ICode is used as a selector bit for both multiplexers, and the data address is found by taking the first 12 bits of the output for the memory address.
 \begin{center}
     \includegraphics[scale=.6]{memaddrdata.png} \\
+\end{center}
+\pagebreak
+\section{PC Update}
+Although the wiring is one of the least complex circuits, this part is arguably one of the most important to the overall functionality to the CPU. Without a correct PC update circuit, the following steps will cause the CPU to perform incorrect calculations and processes for the rest of the code. PC update receives the iCode value, valP, valC, valM, and Cnd to figure out which value needs to be outputted to the PC value. ICode is used as a selector value in a multiplexer to figure out which output is needed for PC. When iCode is 0, this means a HALT function was called and therefore, another 0 value is outputted to PC. When iCode is 1-6, or 10, 11, PC receives valP, if iCode is 8, then PC will receive valC, and if iCode is 9, then PC will receive valM. In certain cases, when iCode is 7, which correlates to jXX, the value of CND will determine whether valC or valP is outputted to PC. When CND is 0, valP is outputted and when CND is 1, valC is outputted. 
+\begin{center}
+    \includegraphics[scale=.6]{pcupdate.png} \\
 \end{center}
 
 \end{document}
