@@ -59,8 +59,8 @@ NOP means "No Operation," which acts like HALT, but means that this step is skip
     \includegraphics[scale=.6]{NOPpic.png}
 \end{center}
 \pagebreak
-\subsection{CMOV (RRMOVQ)}
-CMOV occurs when iCode is 2. CMOV has to do with RRMOVQ, CMOVLE, CMOVL, CMOVE, CMOVNE, CMOVGE, CMOVG. In our case for our CPU, RRMOVQ is the only CMOV value we are interested in. 
+\subsection{RRMOVQ}
+RRMOVQ occurs when iCode is 2. RRMOVQ copies data values from one register to another. This can be used to store one value, while manipulating the other. During OPq, the data in one register is overwritten by the output of the operation performed, and in some cases, the original data is needed for other lines of code.
 \begin{center}
     \includegraphics[scale=.6]{CMOVpic.png}
 \end{center}
@@ -114,7 +114,7 @@ POPQ occurs when iCode is 'b', or 11. POPQ copies the value in the address point
     \includegraphics[scale=.6]{POPQpic.png}
 \end{center}
 \section{Fetch Implementation}
-Our design is basically a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes in from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on if we read in registers or if we read in a  \verb+valC+ we increment our \verb+PC+ using our PC increment module.
+Our design is basically a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on whether we read in registers or if we read in a  \verb+valC+, we increment our \verb+PC+ using our PC increment module.
 \subsection{Fetch}
 \begin{center}
     \includegraphics[scale=.7]{fetch.png}
@@ -130,12 +130,12 @@ The align module determines the values of \verb+rA+, \verb+rB+, and \verb+valC+ 
     \includegraphics[scale=.7]{align.png}
 \end{center}
 \subsection{PC Increment}
-PC increment simply increments the \verb+PC+ based on if our instruction read in registers and/or a \verb+valC+. If we read in registers we add $1$ to our \verb+PC+ and if we read in a \verb+valC+ we add $8$ to our \verb+PC+. We then also just add $1$ for our first byte containing  \verb+icode:ifun+.
+PC increment simply increments the \verb+PC+ based on if our instruction reads in registers and/or a \verb+valC+. If we read in registers we add $1$ to our \verb+PC+ and if we read in a \verb+valC+ we add $8$ to our \verb+PC+. We then also just add $1$ for our first byte containing  \verb+icode:ifun+.
 \begin{center}
     \includegraphics[scale=.5]{pcInc.png}
 \end{center}
 \subsection{Needs ValC and Registers}
-We simply encode which instructions need a \verb+valC+ and registers based on their \verb+icode+. 
+We simply encode which instructions need a \verb+valC+ and register based on their \verb+icode+. 
 \begin{center}
     \includegraphics[scale=.6]{icode.png} \\
     \includegraphics[scale=.8]{ops.png} 
@@ -182,7 +182,7 @@ ALUfun takes in the values of iCode and iFun and provides a 2-bit output to tell
     \includegraphics[scale=.6]{alu_fun.png} \\
 \end{center}
 \subsection{Arithmetic Logic Unit}
-The ALU circuit combines all values found using iCode and iFun, and outputs the value after the operation is completed. ALU will perform all calculations no matter what value of iCode and iFun is taken in, but will only output the needed value for each required operation. This means that when "addq rA, rB" is called, it performs addition, subtraction, multiplication, and XOR, but will only output the addition value. 
+The ALU circuit combines all values found using iCode and iFun and outputs the value after the operation is completed. ALU will perform all calculations no matter what value of iCode and iFun is taken in, but will only output the needed value for each required operation. This means that when "addq rA, rB" is called, it performs addition, subtraction, multiplication, and XOR, but will only output the addition value. 
 \begin{center}
     \includegraphics[scale=.5]{alu.png} \\
 \end{center}
