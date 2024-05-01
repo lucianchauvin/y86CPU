@@ -45,9 +45,74 @@
 \end{tabular}
 \end{adjustbox}
 \end{center}
+\pagebreak
 \section{Timing Diagrams}
-Timing diagrams help represent the behavior of signals in the CPU for each clock cycle. Each clock cycle allows for the CPU to update values and perform calculations needed for each value of iCode. Below are the following clock cycles for each value of iCode:
-\subsection{}
+Timing diagrams help represent the behavior of signals in the CPU for each clock cycle. Each clock cycle allows the CPU to update values and perform calculations needed for each value of iCode. Below are the following clock cycles for each value of iCode:
+\subsection{HALT}
+When iCode value is 0, a HALT is performed. This means that the entire CPU will stop performing processes completely.
+\begin{center}
+    \includegraphics[scale=.6]{HALTpic.png}
+\end{center}
+\subsection{NOP}
+NOP means "No Operation," which acts like HALT, but means that this step is skipped and the CPU can receive future inputs. NOP can be used for pipelining to get rid of hazards that arise throughout the code. 
+\begin{center}
+    \includegraphics[scale=.6]{NOPpic.png}
+\end{center}
+\pagebreak
+\subsection{CMOV (RRMOVQ)}
+CMOV occurs when iCode is 2. CMOV has to do with RRMOVQ, CMOVLE, CMOVL, CMOVE, CMOVNE, CMOVGE, CMOVG. In our case for our CPU, RRMOVQ is the only CMOV value we are interested in. 
+\begin{center}
+    \includegraphics[scale=.6]{CMOVpic.png}
+\end{center}
+\subsection{IRMOVQ}
+IRMOVQ is called when iCode is 3. IRMOVQ writes a specific value, say 4, to the specified register. 
+\begin{center}
+    \includegraphics[scale=.6]{IRMOVQpic.png}
+\end{center}
+\pagebreak
+\subsection{RMMOVQ}
+When iCode is 4, RMMOVQ is called to move a value from a specific register to a memory address. This is so the value in the memory can be accessed later on without the need to reserve a register for a value. This is important because we only have 16 registers to use, and with a clock speed of 2KHz, 2000 cycles occur every second which means that the space to hold values in registers is limited. 
+\begin{center}
+    \includegraphics[scale=.6]{RMMOVQpic.png}
+\end{center}
+\subsection{MRMOVQ}
+When iCode is 5, MRMOVQ is called to be performed. As stated above, register space is limited, so by storing values in the memory, we can utilize these values later on. By letting the CPU decide which memory address to fetch data from into a register, users can create more advanced programs that need more data than the 16 registers can hold.
+\begin{center}
+    \includegraphics[scale=.6]{MRMOVQpic.png}
+\end{center}
+\pagebreak
+\subsection{OPq}
+OPq occurs when the iCode value is 6. OPq means an operation is performed, whether it be addition, subtraction, multiplication, or XOR. This gives the computer the ability to perform arithmetic operations of values and store said data in registers
+\begin{center}
+    \includegraphics[scale=.6]{OPqpic.png}
+\end{center}
+\subsection{jXX}
+When iCode is 7, jXX is performed. The iFun value determines which jump to make: if iFun is 0, a jmp is called, if iFun is 1, jle is called, if iFun is 2, jl is called, etc. 
+\begin{center}
+    \includegraphics[scale=.6]{jXXpic.png}
+\end{center}
+\pagebreak
+\subsection{CALL}
+CALL happens when iCode is 8. It pushes the address of the next instruction onto the stack, \%rsp, and jumps to the specified function. 
+\begin{center}
+    \includegraphics[scale=.6]{cALLpic.png}
+\end{center}
+\subsection{RET}
+RET means "return" and it occurs when the iCode value received is 9. RET tells the CPU to take in the value stored at \%rsp, and jump back to the address received. 
+\begin{center}
+    \includegraphics[scale=.6]{RETpic.png}
+\end{center}
+\pagebreak
+\subsection{PUSHQ}
+PUSHQ is called when iCode is 'a', or 10. PUSHQ decrements \%rsp by 8, and copies the value onto the stack at that specific address pointed by \%rsp. 
+\begin{center}
+    \includegraphics[scale=.6]{PUSHQpic.png}
+\end{center}
+\subsection{POPQ}
+POPQ occurs when iCode is 'b', or 11. POPQ copies the value in the address pointed by \%rsp, and increments \%rsp by 8 bytes. 
+\begin{center}
+    \includegraphics[scale=.6]{POPQpic.png}
+\end{center}
 \section{Fetch Implementation}
 Our design is basically a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes in from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on if we read in registers or if we read in a  \verb+valC+ we increment our \verb+PC+ using our PC increment module.
 \subsection{Fetch}
