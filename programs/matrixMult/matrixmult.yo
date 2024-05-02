@@ -6,7 +6,7 @@
                             |     
                             | 
 0x014:                      | main:
-0x014: 30f20005000000000000 |     irmovq $0x500, %rdx #pointer for array
+0x014: 30f20004000000000000 |     irmovq $0x400, %rdx #pointer for array
                             |     #populate the array with values
 0x01e: 30f30100000000000000 |     irmovq $1, %rbx
 0x028: 40320000000000000000 |     rmmovq %rbx, 0(%rdx)
@@ -32,7 +32,6 @@
                             | 
 0x0cc:                      | matrixmultiply:
                             | 
-                            | 
 0x0cc: 50340800000000000000 |     mrmovq 8(%rsp), %rbx   #pointer to first matrix
                             |     
 0x0d6: 30f00000000000000000 |     irmovq $0, %rax
@@ -46,7 +45,7 @@
 0x112: a01f                 |     pushq %rcx
 0x114: 50132000000000000000 |     mrmovq 32(%rbx), %rcx
 0x11e: a01f                 |     pushq %rcx
-0x120: 80e002000000000000   |     call multiply
+0x120: 80e102000000000000   |     call multiply
 0x129: b0df                 |     popq %r13
 0x12b: b0df                 |     popq %r13
 0x12d: 50134000000000000000 |     mrmovq 64(%rbx), %rcx
@@ -57,7 +56,7 @@
 0x14d: a01f                 |     pushq %rcx
 0x14f: 50133000000000000000 |     mrmovq 48(%rbx), %rcx
 0x159: a01f                 |     pushq %rcx
-0x15b: 80e002000000000000   |     call multiply
+0x15b: 80e102000000000000   |     call multiply
 0x164: b0df                 |     popq %r13
 0x166: b0df                 |     popq %r13
 0x168: 50134000000000000000 |     mrmovq 64(%rbx), %rcx
@@ -68,7 +67,7 @@
 0x188: a01f                 |     pushq %rcx
 0x18a: 50132800000000000000 |     mrmovq 40(%rbx), %rcx
 0x194: a01f                 |     pushq %rcx
-0x196: 80e002000000000000   |     call multiply
+0x196: 80e102000000000000   |     call multiply
 0x19f: b0df                 |     popq %r13
 0x1a1: b0df                 |     popq %r13
 0x1a3: 50134800000000000000 |     mrmovq 72(%rbx), %rcx
@@ -79,7 +78,7 @@
 0x1c3: a01f                 |     pushq %rcx
 0x1c5: 50133800000000000000 |     mrmovq 56(%rbx), %rcx
 0x1cf: a01f                 |     pushq %rcx
-0x1d1: 80e002000000000000   |     call multiply
+0x1d1: 80e102000000000000   |     call multiply
 0x1da: b0df                 |     popq %r13
 0x1dc: b0df                 |     popq %r13
 0x1de: 50134800000000000000 |     mrmovq 72(%rbx), %rcx
@@ -90,7 +89,7 @@
 0x1fe: a01f                 |     pushq %rcx
 0x200: 50132000000000000000 |     mrmovq 32(%rbx), %rcx
 0x20a: a01f                 |     pushq %rcx
-0x20c: 80e002000000000000   |     call multiply
+0x20c: 80e102000000000000   |     call multiply
 0x215: b0df                 |     popq %r13
 0x217: b0df                 |     popq %r13
 0x219: 50135000000000000000 |     mrmovq 80(%rbx), %rcx
@@ -101,7 +100,7 @@
 0x239: a01f                 |     pushq %rcx
 0x23b: 50133000000000000000 |     mrmovq 48(%rbx), %rcx
 0x245: a01f                 |     pushq %rcx
-0x247: 80e002000000000000   |     call multiply
+0x247: 80e102000000000000   |     call multiply
 0x250: b0df                 |     popq %r13
 0x252: b0df                 |     popq %r13
 0x254: 50135000000000000000 |     mrmovq 80(%rbx), %rcx
@@ -112,7 +111,7 @@
 0x274: a01f                 |     pushq %rcx
 0x276: 50132800000000000000 |     mrmovq 40(%rbx), %rcx
 0x280: a01f                 |     pushq %rcx
-0x282: 80e002000000000000   |     call multiply
+0x282: 80e102000000000000   |     call multiply
 0x28b: b0df                 |     popq %r13
 0x28d: b0df                 |     popq %r13
 0x28f: 50135800000000000000 |     mrmovq 88(%rbx), %rcx
@@ -123,59 +122,31 @@
 0x2af: a01f                 |     pushq %rcx
 0x2b1: 50133800000000000000 |     mrmovq 56(%rbx), %rcx
 0x2bb: a01f                 |     pushq %rcx
-0x2bd: 80e002000000000000   |     call multiply
+0x2bd: 80e102000000000000   |     call multiply
 0x2c6: b0df                 |     popq %r13
 0x2c8: b0df                 |     popq %r13
 0x2ca: 50135800000000000000 |     mrmovq 88(%rbx), %rcx
 0x2d4: 6001                 |     addq %rax, %rcx
 0x2d6: 40135800000000000000 |     rmmovq %rcx, 88(%rbx)
                             |     
-0x2e0:                      | multiply:
-0x2e0: 50840800000000000000 |     mrmovq 8(%rsp), %r8
-0x2ea: 50941000000000000000 |     mrmovq 16(%rsp), %r9
-0x2f4: 30f00000000000000000 |     irmovq $0, %rax         #set result to 0
-0x2fe: 30fa0000000000000000 |     irmovq $0, %r10         #register used for constant 0
-0x308: 30fb0100000000000000 |     irmovq $1, %r11         #register used for constant 1
+0x2e0: 90                   |     ret
                             |     
-0x312:                      | multiplyloopa:
-0x312: 61a8                 |     subq %r10, %r8 #check if a != 0
-0x314: 732a03000000000000   |     je multiplydone   #if a = 0, we are done
-0x31d: 61b8                 |     subq %r11, %r8 #decrease a by 1.
-0x31f: 6090                 |     addq %r9, %rax
-0x321: 741203000000000000   |     jne multiplyloopa
+0x2e1:                      | multiply:
+0x2e1: 50840800000000000000 |     mrmovq 8(%rsp), %r8
+0x2eb: 50941000000000000000 |     mrmovq 16(%rsp), %r9
+0x2f5: 30f00000000000000000 |     irmovq $0, %rax         #set result to 0
+0x2ff: 30fa0000000000000000 |     irmovq $0, %r10         #register used for constant 0
+0x309: 30fb0100000000000000 |     irmovq $1, %r11         #register used for constant 1
                             |     
-0x32a:                      | multiplydone:
-0x32a: 90                   |     ret
+0x313:                      | multiplyloopa:
+0x313: 61a8                 |     subq %r10, %r8 #check if a != 0
+0x315: 732b03000000000000   |     je multiplydone   #if a = 0, we are done
+0x31e: 61b8                 |     subq %r11, %r8 #decrease a by 1.
+0x320: 6090                 |     addq %r9, %rax
+0x322: 741303000000000000   |     jne multiplyloopa
                             |     
-                            |     #set up constants
-0x32b: 30f00100000000000000 |     irmovq $1, %rax
-0x335: 30fb0000000000000000 |     irmovq $0, %r11
-0x33f: 30fc0100000000000000 |     irmovq $1, %r12
-0x349: 30fd0800000000000000 |     irmovq $8, %r13
-                            |     
-                            |     #set up hi pointer
-0x353: 50a41000000000000000 |     mrmovq 16(%rsp), %r10   #hi pointer
-0x35d:                      | increasehi:
-0x35d: 61c8                 |     subq %r12, %r8
-0x35f: 737303000000000000   |     je next
-0x368: 60da                 |     addq %r13, %r10
-0x36a: 705d03000000000000   |     jmp increasehi
-0x373:                      | next:
-                            |     
-0x373: 50840800000000000000 |     mrmovq 8(%rsp), %r8
-0x37d:                      | loop:
-0x37d: 61c8                 |     subq %r12, %r8
-0x37f: 73ba03000000000000   |     je ispaldone
-0x388: 50690000000000000000 |     mrmovq (%r9), %rsi
-0x392: 507a0000000000000000 |     mrmovq (%r10), %rdi
-0x39c: 6167                 |     subq %rsi, %rdi
-0x39e: 73b103000000000000   |     je ok 
-0x3a7: 30f00000000000000000 |     irmovq $0, %rax
-0x3b1:                      | ok:
-0x3b1: 707d03000000000000   |     jmp loop
-                            |     
-0x3ba:                      | ispaldone:
-0x3ba: 90                   |     ret
+0x32b:                      | multiplydone:
+0x32b: 90                   |     ret
                             |     
 0x5f8:                      |     .pos 0x5f8
 0x5f8:                      | stack:
