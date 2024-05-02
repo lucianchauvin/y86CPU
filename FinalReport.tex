@@ -113,8 +113,13 @@ POPQ occurs when iCode is 'b', or 11. POPQ copies the value in the address point
 \begin{center}
     \includegraphics[scale=.6]{POPQpic.png}
 \end{center}
+\section{Overall CPU}
+When combining each stage, we created our CPU and verified that all stages were performing properly. The completed circuit is down below:
+\begin{center}
+    \includegraphics[scale=.6]{mainpic.png}
+\end{center}
 \section{Fetch Implementation}
-Our design is basically a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on whether we read in registers or if we read in a  \verb+valC+, we increment our \verb+PC+ using our PC increment module.
+Our design is a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on whether we read in registers or if we read in a  \verb+valC+, we increment our \verb+PC+ using our PC increment module.
 \subsection{Fetch}
 \begin{center}
     \includegraphics[scale=.7]{fetch.png}
@@ -130,18 +135,18 @@ The align module determines the values of \verb+rA+, \verb+rB+, and \verb+valC+ 
     \includegraphics[scale=.7]{align.png}
 \end{center}
 \subsection{PC Increment}
-PC increment simply increments the \verb+PC+ based on if our instruction reads in registers and/or a \verb+valC+. If we read in registers we add $1$ to our \verb+PC+ and if we read in a \verb+valC+ we add $8$ to our \verb+PC+. We then also just add $1$ for our first byte containing  \verb+icode:ifun+.
+PC increment simply increments the \verb+PC+ based on whether our instruction reads in registers and/or a \verb+valC+. If we read in registers we add $1$ to our \verb+PC+ and if we read in a \verb+valC+ we add $8$ to our \verb+PC+. We then also just add $1$ for our first byte containing  \verb+icode:ifun+.
 \begin{center}
     \includegraphics[scale=.5]{pcInc.png}
 \end{center}
 \subsection{Needs ValC and Registers}
 We simply encode which instructions need a \verb+valC+ and register based on their \verb+icode+. 
 \begin{center}
-    \includegraphics[scale=.6]{icode.png} \\
-    \includegraphics[scale=.8]{ops.png} 
-    \\
     \includegraphics[scale=.7]{needsValC.png}
     \includegraphics[scale=.7]{needsReg.png}
+    \\
+    \includegraphics[scale=.6]{icode.png} \\
+    \includegraphics[scale=.8]{ops.png} 
 \end{center}
 \section{Decode and Write Back Implementation}
 Decode takes in 2 register addresses, rA and rB, and 2 write back values. During the decode stage, iCode to determines which registers to read from and outputs those values to valA and valB. During the write-back stage, the data is from valM and valE are written to the addresses outputted by dstM, and dstE, respectively. 
