@@ -113,10 +113,11 @@ POPQ occurs when iCode is 'b', or 11. POPQ copies the value in the address point
 \begin{center}
     \includegraphics[scale=.6]{POPQpic.png}
 \end{center}
+\pagebreak
 \section{Overall CPU}
 When combining each stage, we created our CPU and verified that all stages were performing properly. The completed circuit is down below:
 \begin{center}
-    \includegraphics[scale=.6]{mainpic.png}
+    \includegraphics[scale=.35]{mainCPU.png}
 \end{center}
 \section{Fetch Implementation}
 Our design is a one-to-one implementation of what is shown on the slides. Our instruction memory module stores the program in ROM and reads $10$ bytes from the current \verb+PC+. We then pass these $10$ bytes to our align module which | based on if we need registers or not | sets out \verb+rA+, \verb+rB+, and \verb+valC+ correctly. We determine whether we need registers based on the value of \verb+icode+. Then based on whether we read in registers or if we read in a  \verb+valC+, we increment our \verb+PC+ using our PC increment module.
