@@ -6,7 +6,7 @@
     
 
 main:
-    irmovq $0x500, %rdx #pointer for array
+    irmovq $0x400, %rdx #pointer for array
     #populate the array with values
     irmovq $1, %rbx
     rmmovq %rbx, 0(%rdx)
@@ -31,7 +31,6 @@ main:
     ret
 
 matrixmultiply:
-
 
     mrmovq 8(%rsp), %rbx   #pointer to first matrix
     
@@ -130,6 +129,8 @@ matrixmultiply:
     addq %rax, %rcx
     rmmovq %rcx, 88(%rbx)
     
+    ret
+    
 multiply:
     mrmovq 8(%rsp), %r8
     mrmovq 16(%rsp), %r9
@@ -149,3 +150,4 @@ multiplydone:
     
     .pos 0x5f8
 stack:
+
