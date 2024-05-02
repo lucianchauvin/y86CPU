@@ -14,14 +14,13 @@ int main()
     }
     
     int ok = 1;
+    int i = n - 1;
+    int lo = 0;
     
-    for(int i = 0; i < n; i++) {
-        int opposite_idx = n - i - 1;
-        int lo = arr[i];
-        int hi = arr[opposite_idx];
-        if(hi != lo) {
-            ok = 0;
-        }
+    while(i >= 0) {
+        if(arr[lo] != arr[i]) ok = 0;
+        lo++;
+        i--;
     }
     
     //optional printing
