@@ -147,36 +147,5 @@ multiplyloopa:
 multiplydone:
     ret
     
-    #set up constants
-    irmovq $1, %rax
-    irmovq $0, %r11
-    irmovq $1, %r12
-    irmovq $8, %r13
-    
-    #set up hi pointer
-    mrmovq 16(%rsp), %r10   #hi pointer
-increasehi:
-    subq %r12, %r8
-    je next
-    addq %r13, %r10
-    jmp increasehi
-next:
-    
-    mrmovq 8(%rsp), %r8
-loop:
-    subq %r12, %r8
-    je ispaldone
-    mrmovq (%r9), %rsi
-    mrmovq (%r10), %rdi
-    subq %rsi, %rdi
-    je ok 
-    irmovq $0, %rax
-ok:
-    jmp loop
-    
-ispaldone:
-    ret
-    
     .pos 0x5f8
 stack:
-
