@@ -9,7 +9,7 @@
 0x014: 30f10500000000000000 |     irmovq $5, %rcx #size of the array we are going to sort
 0x01e: 30f20003000000000000 |     irmovq $0x300, %rdx #pointer for array
                             |     #populate the array with values
-0x028: 30f30000000000000000 |     irmovq $0, %rbx
+0x028: 30f30100000000000000 |     irmovq $1, %rbx
 0x032: 40320000000000000000 |     rmmovq %rbx, 0(%rdx)
 0x03c: 30f30200000000000000 |     irmovq $2, %rbx
 0x046: 40320800000000000000 |     rmmovq %rbx, 8(%rdx)

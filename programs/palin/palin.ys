@@ -9,7 +9,7 @@ main:
     irmovq $5, %rcx #size of the array we are going to sort
     irmovq $0x300, %rdx #pointer for array
     #populate the array with values
-    irmovq $0, %rbx
+    irmovq $1, %rbx
     rmmovq %rbx, 0(%rdx)
     irmovq $2, %rbx
     rmmovq %rbx, 8(%rdx)
