@@ -1,3 +1,4 @@
+%! TeX root = main.tex
 \documentclass{article}
 \usepackage[shortlabels]{enumitem}
 \usepackage{amsmath, amssymb, graphicx, mathtools, nicefrac, verbatim}
@@ -8,10 +9,7 @@
 \graphicspath{{imgs/}}
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-\usepackage{cprotect}
-\title{Group 18: CSCE 312 CPU Project | Final Report}
-\author{Lucian Chauvin \\ 133003371 \\\And Joshua Lass \\ 531009387 \\\And Bjorn Quarfordt \\ 230003985}
-\begin{document}
+\usepackage{cprotect} \title{Group 18: CSCE 312 CPU Project | Final Report} \author{Lucian Chauvin \\ 133003371 \\\And Joshua Lass \\ 531009387 \\\And Bjorn Quarfordt \\ 230003985} \begin{document}
 \maketitle
 \vspace{-1.5cm}
 \section{Transformation Tables}
@@ -708,4 +706,6 @@ When running this on our CPU we also get these results:
 Once again, everything works out.
 \subsection{Code Tests Summary}
 In summary, all of our tests work as expected. We test all of our instructions, and they all follow what running \verb+yis+ on our object files outputs. Specifically for the honors requirement, we utilize a multiply function in our matrix multiply code (that uses call and return).
+\subsection{Compiler}
+We also implemented our own compiler. We modified the one given to us to work with big endian as this is how we built our CPU.
 \end{document}
